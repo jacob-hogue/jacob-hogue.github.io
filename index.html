@@ -1,1 +1,1145 @@
-"Hello World" 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jacob Hogue Personal Portfolio</title>
+  
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="assets\images\Me_AI.png" alt="Jacob Hogue" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Jacob Hogue">Jacob Hogue</h1>
+
+          <p class="title">Geospatial Solutions Engineer</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down" style="pointer-events:none"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline" style="pointer-events:none"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:everythingspatialgis@gmail.com" class="contact-link">everythingspatialgis@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline" style="pointer-events:none"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+19788680097" class="contact-link">+1 (978) 868-0097</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline" style="pointer-events:none"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Massachusetts, USA</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/jacobhogue" class="social-link">
+              <ion-icon name="logo-linkedin" style="pointer-events:none"></ion-icon>
+            </a>
+          </li>
+
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+        <!-- <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li> -->
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm a Geospatial Solutions Engineer and Conservation Biologist from Lunenburg, Massachusetts, working in the geospatial air mobility domain.
+            I enjoy
+            turning complex geospatial problems into easily-digestible maps, web apps, and visualizations.
+          </p>
+
+          <p>
+            My overall objective is to solve geospatial problems for my clients and evangelize the use of geospatial technology for solving complex environmental, social justice, and mobility problems.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What I Work On</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="assets\images\search-feature.svg" alt="Analysis Icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Geospatial Analysis</h4>
+
+                <p class="service-item-text">
+                  Complex analysis using spatial libraries spanning across languages and many software packages.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="assets\images\world-folder-o.svg" alt="Map folder Icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Database Management</h4>
+
+                <p class="service-item-text">
+                  Managing spatial (raster and vector) and tabular data, metadata and REST services.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="assets\images\map-book.svg" alt="Map Book Icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Cartography and Data Visualization</h4>
+
+                <p class="service-item-text">
+                  Professional creation of maps, dashboards, and 3D visuals.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Dev Icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Development</h4>
+
+                <p class="service-item-text">
+                  Automation and scripting of geoprocessing tasks and web development.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+         <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Performance Reviews</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item> 
+
+                 <figure class="testimonials-avatar-box">
+                  <img src="assets\images\AirspaceSupe.jpg" alt="Airspace Link" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Supervisor - Airspace Link</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Jacob has done a great job getting up to speed on our team.  He is patient and focused.  
+                    He has showcased these skills on the BAO research project.  He has done a fabulous job thinking through
+                     the business use cases to ensure that our prototypes are going to be directly aligned to a market signal.  
+                     He does not hesitate to jump in and learn a new tool, and his attention to detail ensures that our outputs are
+                    clear and that the visualization adds value to the map for our target user persona.
+                  </p>
+                </div>
+
+              </div>
+            </li> 
+
+             <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="assets\images\RochesterSupe.jpg" alt="Rochester" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Supervisor - Rochester NH</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    A year ago when Jacob was hired, he brought to the City a significant GIS skill set. 
+                    In his first year with the Public Works Department, Jacob has gained an understanding of his job responsibilities 
+                    and how he can assist staff with GIS tools. For example, he has created maps, such as a Water Distribution map for
+                     the Utilities Supervisor, and has created apps, such as a Utilities Map editing app for Department engineers. 
+                     Jacob has exhibited exceptional skill in performing his job.
+                  </p>
+                </div>
+
+              </div>
+            </li> 
+
+             <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="assets\images\NHGSSupe.webp" alt="NHGS" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Supervisor - NHGS</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Jacob’s strengths clearly lie in his knowledge of GIS, and in his ability to make valuable suggestions
+                    regarding techniques and potential applications. Such suggestions were readily made during the course
+                    of providing GIS assistance, and in general conversation about the stream crossing initiative and broader
+                    Flood Hazards Program. The suggestions demonstrated that his knowledge of GIS techniques and
+                    software is current.
+                  </p>
+                </div>
+
+              </div>
+            </li> 
+
+          </ul>
+
+        </section> 
+
+
+        <!--
+          - testimonials modal
+        -->
+ 
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline" style="pointer-events:none"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+              <!-- <time datetime="2021-06-14">14 June, 2021</time> -->
+
+              <div data-modal-text>
+                <p>
+                  
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+ 
+
+          <!--
+          - clients
+        -->
+       
+        <section class="clients">
+
+          <h3 class="h3 clients-title">Places I've Worked</h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="assets\images\AirspaceLink_Logo-removebg-preview.png" alt="Airspace Link">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="assets\images\RochesterNH_Logo-removebg-preview.png" alt="City of Rochester, NH">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="assets\images\GraniteStateRuralWaterAssociation_Logo-removebg-preview.png" alt="Granite State Rural Water">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="assets\images\ASAL_Logo-removebg-preview.png" alt="Antioch Spatial Analysis Lab">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="assets\images\DES_Logo.png" alt="New Hampshire Geological Survey">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="assets\images\Solitude_Logo-removebg-preview.png" alt="Solitude Lake and Pond Management">
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline" style="pointer-events:none"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Antioch University New England</h4>
+
+              <span>2018 — 2020</span>
+
+              <p class="timeline-text">
+                Master of Science in
+                Environmental Studies (Conservation Biology)
+                with a Master's Certificate in Applied GIS.
+              </p>
+              <p class ="timeline-text">
+                Professional Science Master's Designation
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Fitchburg State University</h4>
+
+              <span>2014 — 2018</span>
+
+              <p class="timeline-text">
+                Bachelor of Science in Environmental and Earth Sciences with a minor in Geographic Science and Technology.
+              </p>
+              <p class ="timeline-text">
+                <span>&bull;</span>Certificate of Excellence in Earth Systems Science
+                <span>&bull;</span>Summa Cum Laude (3.99 G.P.A.)
+                <span>&bull;</span>President's and Dean's List all semesters
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Lunenburg High School</h4>
+
+              <span>2010 — 2014</span>
+
+              <p class="timeline-text">
+                
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline" style="pointer-events:none"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Geospatial Solutions Engineer</h4>
+              <span>Airspace Link (2022 — Present)</span>
+
+              <p class="timeline-text">
+                  <span>&bull;</span>Tasked with proving out new technologies, tools, data services, and rapid solutions
+                    using a well-tuned geospatial platform and data framework which serves as the
+                    engine that supports frequent shipments of geospatial features, services and data
+                    to UAS stakeholders.
+                  <span>&bull;</span>Support the installation, configuration, and administration of a full stack of
+                    geospatial technology, that includes web apps, web services, and databases.
+                  <span>&bull;</span>Utilize arcpy, GDAL, FIONA, ESRI Python/Javascript API, and other geospatial
+                    libraries to perform spatial analysis/processing.
+                  <span>&bull;</span>Maintain code repositories in GitHub and apps deployed using a GitHub Actions
+                    CI/CD pipeline.
+                  <span>&bull;</span>Utilize data hosted in Azure, Postgres, Enterprise geodatabases for spatial analysis.
+                  <span>&bull;</span>Maintain parody of products and services between Dev, Stage, and Prod
+                     Enterprise/AGOL instances.
+                  <span>&bull;</span>Create operational viewers using Experience Builder, Insights, and Dashboards for
+                    municipal and UAS clients.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">GIS/Asset Management Technician</h4>
+
+              <span>City of Rochester, NH (2021 — 2022)</span>
+
+              <p class="timeline-text">
+                <span>&bull;</span>Tasked with surveying, mapping, and interpreting various public infrastructure and
+                land features to support Public Works projects, GPS efforts, asset management,
+                and other city functions.
+                  <span>&bull;</span>Performed field work and asset management functions utilizing Trimble and Arrow
+                  GPS units in conjunction with CAD record drawing interpretation and georeferencing.
+                  <span>&bull;</span>Performed GIS and geospatial analysis for engineering and environmental design
+                  projects using ArcGIS Pro 2.6, Web App Builder, Python, and Arcade expressions.
+                  • Gained fluency in Enterprise geodatabase administration, Microsoft SQL Server,
+                  Operations Dashboard, and Beehive Asset Management Software.
+                  <span>&bull;</span>Created a work order and service request workflow through SQL related view
+                  tables and a Web AppBuilder app for city staff.
+                  <span>&bull;</span>Built a vehicle maintenance/budget Experience Builder application with vehicle
+                  tracking info using Verizon Fleet Management sensors.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">GIS/Source Water Specialist</h4>
+
+              <span>Granite State Rural Water Association (2020 — 2021)</span>
+
+              <p class="timeline-text">
+                <span>&bull;</span>Coordinated with state, county and local agencies in identifying and prioritizing
+                areas for source water protection programs along with spearheading the
+                implementation of these programs.
+                  <span>&bull;</span>Provided professional one-on-one "on-site" assistance and training to rural and
+                  small communities in implementing source water protection plans and basic GIS
+                  skills. 
+                  <span>&bull;</span>Performed GIS and geospatial analysis related to hydrology, source water, and
+                  groundwater resources in ArcGIS Pro, AGOL, Collector and open-source GIS
+                  applications.
+                  <span>&bull;</span>Created a hydrology, geology, and soil map series for the Whitewater Watershed
+                  Management Plan.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">GIS Teaching Assistant/Research Fellow</h4>
+
+              <span>Antioch University New England (2018 — 2020)</span>
+
+              <p class="timeline-text">
+                <span>&bull;</span>Assisted students in the Intro to GIS and Advanced GIS Master’s certificate courses by facilitating lessons and discussion.
+                <span>&bull;</span>Hosted GIS résumé workshops and GIS/database skills demos for Master’s students.
+                <span>&bull;</span>Conducted research and spatial analysis using ArcMap 10.7, ArcGIS Pro, and Python for Antioch staff and partners through the Antioch Spatial Analysis Lab (ASAL).
+                <span>&bull;</span>Maintained internship and dissertation databases displayed using Operations Dashboard, updated via Survey 123.
+                <span>&bull;</span>Staffed the Antioch Spatial Analysis Lab and co-managed printing services.
+                <span>&bull;</span>Performed Co-Occurrence Analysis/NRI Mapping for Moosewood Ecological, LLC for the towns of Chichester and Bow, NH.
+                <span>&bull;</span>Network Analysis for compost facilities for The Northeast Resource Recovery Association.
+                <span>&bull;</span>Collector App creation for the American Turtle Observatory to enable wood turtle tracking and to gather metrics/species abundance data.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Microsoft Office Suite</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">ArcGIS Pro, ArcGIS 10.x, Story Maps, Field Maps, Collector, Survey 123, Dashboards, Web App Builder, Experience Builder</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Python, R, SQL, Arcade, HTML, CSS, Javascript</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">QGIS, ENVI, Google Earth Engine, Azure, Dbeaver, PostMan</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Maps</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>ESRI Applications</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Documents</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Open-Source Applications</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Code Snippets</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down" style="pointer-events:none"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Maps</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>ESRI Applications</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Documents</button>
+              </li>
+              <li class="filter-item">
+                <button data-filter-btn>Open-Source Applications</button>
+              </li>
+              <li class="filter-item">
+                <button data-filter-btn>Code Snippets</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="esri applications">
+              <a href="https://experience.arcgis.com/experience/99eb6d0adca04715afe95f7b3448a7c6">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline" style="pointer-events:none"></ion-icon>
+                  </div>
+
+                  <img src="assets\images\RochesterDronesESRIApp.png" alt="Rochester NH Drone App" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Rochester, NH Drone App</h3>
+
+                <p class="project-category">ESRI Applications</p>
+
+                <p class="project-tools">Experience Builder, Scene Viewer, Map Viewer, ModelBuilder, Suitability Analysis, Survey123, Dashboards</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="open-source applications">
+              <a href="https://charm-tortoiseshell-croissant.glitch.me">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline" style="pointer-events:none"></ion-icon>
+                  </div>
+
+                  <img src="assets\images\CesiumDroneSim.png" alt="Cesium Drone Sim" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Cesium Drone Simulator</h3>
+
+                <p class="project-category">Open-Source Applications</p>
+                
+                <p class="project-tools">Cesium.js, Cesium Ion, glTF, json</p>
+
+
+              </a>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="maps">
+              <a href="https://drive.google.com/file/d/1u54LbmW5ZMrUBvMHE7np4u03ZCBNhiZm/view?usp=drive_link">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline" style="pointer-events:none"></ion-icon>
+                  </div>
+
+                  <img src="assets\images\KennerdellSuperfund.png" alt="Kenerdell Superfund" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Kenerdell Superfund Site</h3>
+
+                <p class="project-category">Maps</p>
+
+                <p class="project-tools">ArcGIS Pro, Excel</p>
+
+              </a>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="maps">
+              <a href="https://drive.google.com/drive/folders/13U5E5WVReo-EPXX9H7mNUk3BJljXO49N?usp=drive_link">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline" style="pointer-events:none"></ion-icon>
+                  </div>
+
+                  <img src="assets\images\ConservationFocusAreas4_9_2020.jpg" alt="Bow, NH NRI" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bow, NH Natural Resources Inventory</h3>
+
+                <p class="project-category">Maps</p>
+
+                <p class="project-tools">ArcGIS Pro, GPS, Python, arcpy, custom toolbox</p>
+
+              </a>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="documents">
+              <a href="https://drive.google.com/file/d/1IYt0BpxsKtW5zrtQCDwIqWRQl2uYpwxL/view?usp=drive_link">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline" style="pointer-events:none"></ion-icon>
+                  </div>
+
+                  <img src="assets\images\MastersPracticum.png" alt="Master's GIS Practicum" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Automating NRI - Master's GIS Practicum</h3>
+
+                <p class="project-category">Documents</p>
+
+                <p class="project-tools">Python, arcpy</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
+
+                  <p class="blog-text">
+                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
+
+                  <p class="blog-text">
+                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #80</h3>
+
+                  <p class="blog-text">
+                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
+
+                  <p class="blog-text">
+                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
+
+                  <p class="blog-text">
+                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #79</h3>
+
+                  <p class="blog-text">
+                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d754686.8717015632!2d-72.55636968854962!3d42.36393319937657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e40c1da25734bf%3A0xd9e5f41231624d7e!2sWorcester%20County%2C%20MA!5e0!3m2!1sen!2sus!4v1708734457433!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="https://formspree.io/f/xyyrjerl" class="form" data-form method="POST">
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
