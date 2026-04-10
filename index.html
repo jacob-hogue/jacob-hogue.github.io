@@ -213,7 +213,7 @@
       max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin 0.3s ease;
       margin-top: 0;
     }
-    .case-study-detail.open { max-height: 600px; margin-top: 16px; }
+    .case-study-detail.open { max-height: 1000px; margin-top: 16px; }
     .case-study-detail dl {
       display: grid; grid-template-columns: auto 1fr; gap: 8px 16px;
       font-size: 13px; line-height: 1.7;
@@ -231,7 +231,14 @@
       margin-top: 12px; background: none; border: none; padding: 0;
     }
     .case-study-toggle:hover { text-decoration: underline; }
-    .project-card.featured { border-color: rgba(56,189,248,0.2); }
+    .project-card.featured {
+      border-color: rgba(56,189,248,0.25);
+      box-shadow: 0 0 16px rgba(56,189,248,0.08), inset 0 0 12px rgba(56,189,248,0.03);
+    }
+    .project-card.featured:hover {
+      border-color: rgba(56,189,248,0.4);
+      box-shadow: 0 4px 24px rgba(56,189,248,0.12), inset 0 0 12px rgba(56,189,248,0.04);
+    }
 
     /* ─── Skills ─── */
     .skills-grid {
@@ -530,7 +537,7 @@
   <div class="container">
     <div class="section-label">Featured Projects</div>
     <h2 class="section-title">Built and shipped</h2>
-    <p class="section-desc">AI roadmap projects, web applications, ESRI solutions, and cartography.</p>
+    <p class="section-desc">AI roadmap projects, web applications, ESRI solutions, and cartography. Featured projects include expandable case studies.</p>
 
     <!-- Filter tabs -->
     <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; margin-bottom: 24px;" id="project-filters">
@@ -545,22 +552,33 @@
     <div class="project-grid" id="project-grid">
 
       <!-- 1. Cesium Drone Simulator — Airspace Link, shipped -->
-      <div class="project-card" data-category="webapp">
+      <div class="project-card featured" data-category="webapp">
         <div class="project-card-header">
           <div class="project-card-title">Cesium Drone Simulator</div>
-          <span class="project-card-type">Web App</span>
+          <span class="project-card-type">Case Study</span>
         </div>
         <img src="assets/images/CesiumDroneSim.png" alt="Cesium Drone Simulator" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">3D drone flight simulation over photorealistic terrain using Cesium.js with glTF model and real-time flight path rendering. Deployed to the AirHub Marketplace.</div>
         <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Cesium.js</span><span>Cesium Ion</span><span>glTF</span></div>
+        <button class="case-study-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '- Hide details' : '+ View case study';">+ View case study</button>
+        <div class="case-study-detail">
+          <dl>
+            <dt>Problem</dt>
+            <dd>Operators and city officials had no way to visualize planned drone routes in the context of real-world terrain, buildings, and obstacles — making it difficult to assess operational risk, communicate value to stakeholders, or plan missions over complex urban environments.</dd>
+            <dt>Approach</dt>
+            <dd>Built a 3D flight simulator using Cesium.js with photorealistic 3D tiles and real route data. Operators can load planned flight paths over actual cityscapes, simulate drone operations, and identify obstacle conflicts before flying. Integrated glTF drone models for realistic visualization.</dd>
+            <dt>Outcome</dt>
+            <dd>Deployed to the AirHub Marketplace, giving municipal clients and drone operators a planning and risk assessment tool that demonstrates the value of UAS operations in their communities using their own real-world geography.</dd>
+          </dl>
+        </div>
         <div class="project-card-origin">Airspace Link</div>
       </div>
 
       <!-- 2. Airspace Obstruction Calculator — Airspace Link -->
-      <div class="project-card" data-category="webapp">
+      <div class="project-card featured" data-category="webapp">
         <div class="project-card-header">
           <div class="project-card-title">Airspace Obstruction Calculator</div>
-          <span class="project-card-type">Web App</span>
+          <span class="project-card-type">Case Study</span>
         </div>
         <!-- Conceptual cross-section diagram -->
         <div style="background: rgba(15,17,23,0.9); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; position: relative; overflow: hidden;">
@@ -625,14 +643,25 @@
         </div>
         <div class="project-card-desc">Web application for evaluating airspace obstruction risk. Computes ground elevation at a proposed structure location and compares its AGL height against overlapping FAA restriction surfaces to determine penetration or clearance, with an interactive cross-section diagram.</div>
         <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Elevation Service</span><span>JavaScript</span><span>Chart.js</span></div>
+        <button class="case-study-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '- Hide details' : '+ View case study';">+ View case study</button>
+        <div class="case-study-detail">
+          <dl>
+            <dt>Problem</dt>
+            <dd>Engineers relied on manual calculations and spreadsheets to determine whether proposed structures would penetrate restricted airspace — a slow, error-prone process that didn't scale across complex airspace environments.</dd>
+            <dt>Approach</dt>
+            <dd>Built a web application that automates airspace obstruction analysis. Users select a location, enter a proposed structure height, and receive an instant penetration-or-clearance determination with a visual cross-section diagram.</dd>
+            <dt>Outcome</dt>
+            <dd>Replaced manual spreadsheet workflows with an interactive tool that delivers instant obstruction analysis — reducing calculation time from hours to seconds and eliminating human error across complex airspace environments.</dd>
+          </dl>
+        </div>
         <div class="project-card-origin">Airspace Link</div>
       </div>
 
       <!-- 3. Romulus MI Airspace Analysis — Airspace Link -->
-      <div class="project-card" data-category="esri">
+      <div class="project-card featured" data-category="esri">
         <div class="project-card-header">
           <div class="project-card-title">Romulus MI Airspace & Ground Risk Analysis</div>
-          <span class="project-card-type">ESRI</span>
+          <span class="project-card-type">Case Study</span>
         </div>
         <div style="margin-bottom: 12px;">
           <div style="font-family: var(--mono); font-size: 9px; color: var(--text-3); margin-bottom: 4px;">BEFORE</div>
@@ -642,50 +671,70 @@
         </div>
         <div class="project-card-desc">Led a spatial analysis that elevated 34 FAA ceiling grids and expanded legal drone flight area by nearly 14 square miles in Romulus — directly benefiting 5,500+ residents and nearly 300 businesses.</div>
         <div class="project-card-tech"><span>ArcGIS Pro</span><span>AirHub HexGen</span><span>FAA API</span><span>PostgreSQL</span></div>
+        <button class="case-study-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '- Hide details' : '+ View case study';">+ View case study</button>
+        <div class="case-study-detail">
+          <dl>
+            <dt>Problem</dt>
+            <dd>FAA airspace restrictions in Romulus, MI were overly conservative, limiting legal drone operations and preventing residents and businesses from accessing UAS services across large portions of the city.</dd>
+            <dt>Approach</dt>
+            <dd>Used AirHub HexGen to generate a ground risk surface from 30+ obstruction datasets. Analyzed DTW approach/departure surfaces for overlapping air hazards and evaluated temporal flight density and historical air traffic data to assess air risk. Combined ground and air risk assessments to determine which flight grids could safely have their ceiling heights elevated.</dd>
+            <dt>Outcome</dt>
+            <dd>Successfully elevated 34 ceiling grids, expanding legal drone flight area by nearly 14 square miles — directly benefiting 5,500+ residents and nearly 300 businesses by opening new drone opportunity zones within the city.</dd>
+          </dl>
+        </div>
         <a href="https://www.detroitaero.org/news/in-the-news/romulus-soars-into-the-future/" target="_blank" class="project-card-link">Read coverage &nearr;</a>
         <div class="project-card-origin">Airspace Link</div>
       </div>
 
-      <!-- 3. Drone Operations Assessment — Airspace Link -->
-      <div class="project-card" data-category="esri">
+      <!-- 5. Drone Operations Assessment — Airspace Link -->
+      <div class="project-card featured" data-category="esri">
         <div class="project-card-header">
           <div class="project-card-title">Drone Operations Assessment</div>
-          <span class="project-card-type">ESRI</span>
+          <span class="project-card-type">Case Study</span>
         </div>
         <img src="assets/images/UASIntegrationFramework.png" alt="UAS Integration Framework" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Automated a workflow to assess community drone program readiness and map customers onto a 6-phase UAS integration framework. Led to increased customer retention and reduction in onboarding time.</div>
         <div class="project-card-tech"><span>Survey123</span><span>Power Automate</span><span>ArcGIS Online</span><span>Report Templates</span></div>
+        <button class="case-study-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '- Hide details' : '+ View case study';">+ View case study</button>
+        <div class="case-study-detail">
+          <dl>
+            <dt>Problem</dt>
+            <dd>Many municipalities and organizations want to adopt drone programs but don't know where to start. Account managers were manually generating readiness reports through spreadsheets — a slow, inconsistent process that delayed onboarding and made it difficult to track where clients stood in their drone adoption journey.</dd>
+            <dt>Approach</dt>
+            <dd>Built an automated assessment pipeline using Survey123 for data capture, Power Automate for workflow orchestration and account manager alerts, and Report Templates for standardized output. The system maps each client onto a 6-phase UAS integration framework, quantifying their readiness level and identifying specific strengths and areas for improvement.</dd>
+            <dt>Outcome</dt>
+            <dd>Reduced report generation time by ~50% and eliminated manual inconsistencies. Account managers now receive automated alerts on new assessments, enabling faster client onboarding. The framework gives organizations a clear roadmap from initial regulations through scaling their drone programs.</dd>
+          </dl>
+        </div>
         <a href="https://airspacelink.com/hubfs/UAS%20READINESS%20ASSESSMENT_V2.pdf" target="_blank" class="project-card-link">View assessment framework &nearr;</a>
         <div class="project-card-origin">Airspace Link</div>
       </div>
 
       <!-- 4. Arlington TX Story Map — Airspace Link -->
-      <div class="project-card" data-category="esri">
+      <div class="project-card featured" data-category="esri">
         <div class="project-card-header">
           <div class="project-card-title">Arlington TX Story Map</div>
-          <span class="project-card-type">ESRI</span>
+          <span class="project-card-type">Case Study</span>
         </div>
         <img src="assets/images/ArlingtonStoryMap.png" alt="Arlington Multimodal Delivery Demonstration" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Multimodal Delivery Demonstration Story Map for the City of Arlington, TX — investigating the feasibility of fully electric multimodal last-mile delivery via autonomous vehicles and UAS for underserved communities.</div>
         <div class="project-card-tech"><span>ArcGIS StoryMaps</span><span>Network Analyst</span><span>routingpy</span><span>ArcGIS Pro</span></div>
+        <button class="case-study-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '- Hide details' : '+ View case study';">+ View case study</button>
+        <div class="case-study-detail">
+          <dl>
+            <dt>Problem</dt>
+            <dd>Underserved communities in Arlington's 76010 zip code had limited access to healthy food and no viable last-mile delivery infrastructure. The city needed to evaluate whether fully electric autonomous vehicles and UAS could fill this gap.</dd>
+            <dt>Approach</dt>
+            <dd>Performed network analysis to optimize autonomous ground vehicle routing — constraining for speed limits over 40mph, U-turns, and unprotected left turns. Defined two delivery zones based on vehicle range limitations and community partner locations including the Tarrant Area Food Bank and UT Arlington. Built the Story Map to communicate the full demonstration to stakeholders.</dd>
+            <dt>Outcome</dt>
+            <dd>Two demonstrations delivered 311 grocery packages to households across two phases. Demo 1 (139 deliveries) validated the air-to-ground handoff model. Demo 2 (172 deliveries) expanded the zone and added Beyond Visual Line of Sight and dual-drone operations. UT Arlington surveys confirmed community acceptance of autonomous delivery.</dd>
+          </dl>
+        </div>
         <a href="https://storymaps.arcgis.com/stories/cfcc5ef2300e4d64a98de56e5e8cb763" target="_blank" class="project-card-link">View Story Map &nearr;</a>
         <div class="project-card-origin">Airspace Link</div>
       </div>
 
-      <!-- 3. Rochester NH Drone App — Professional, live -->
-      <div class="project-card" data-category="esri">
-        <div class="project-card-header">
-          <div class="project-card-title">Rochester NH Drone App</div>
-          <span class="project-card-type">ESRI</span>
-        </div>
-        <img src="assets/images/RochesterDronesESRIApp.png" alt="Rochester Drone App" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
-        <div class="project-card-desc">Drone suitability analysis and flight planning application for municipal UAS operations with 3D scene integration and field data collection.</div>
-        <div class="project-card-tech"><span>Experience Builder</span><span>3D Scenes</span><span>Suitability Modeler</span><span>Dashboards</span><span>Survey123</span></div>
-        <a href="https://experience.arcgis.com/experience/99eb6d0adca04715afe95f7b3448a7c6" target="_blank" class="project-card-link">View live app &nearr;</a>
-        <div class="project-card-origin">City of Rochester, NH</div>
-      </div>
-
-      <!-- 4. Async Data Pipeline — Case Study -->
+      <!-- 6. Async Data Pipeline — Case Study -->
       <div class="project-card featured" data-category="roadmap">
         <div class="project-card-header">
           <div class="project-card-title">Async Data Pipeline</div>
@@ -732,7 +781,20 @@
         <div class="project-card-origin">Personal</div>
       </div>
 
-      <!-- 6. Air Quality Dashboard — Full-stack -->
+      <!-- Rochester NH Drone App — Professional, live -->
+      <div class="project-card" data-category="esri">
+        <div class="project-card-header">
+          <div class="project-card-title">Rochester NH Drone App</div>
+          <span class="project-card-type">ESRI</span>
+        </div>
+        <img src="assets/images/RochesterDronesESRIApp.png" alt="Rochester Drone App" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
+        <div class="project-card-desc">Drone suitability analysis and flight planning application for municipal UAS operations with 3D scene integration and field data collection.</div>
+        <div class="project-card-tech"><span>Experience Builder</span><span>3D Scenes</span><span>Suitability Modeler</span><span>Dashboards</span><span>Survey123</span></div>
+        <a href="https://experience.arcgis.com/experience/99eb6d0adca04715afe95f7b3448a7c6" target="_blank" class="project-card-link">View live app &nearr;</a>
+        <div class="project-card-origin">City of Rochester, NH</div>
+      </div>
+
+      <!-- Air Quality Dashboard — Full-stack -->
       <div class="project-card" data-category="webapp">
         <div class="project-card-header">
           <div class="project-card-title">Air Quality Dashboard</div>
