@@ -1,0 +1,20 @@
+# Claude Code
+.claude/
+
+# Internal docs
+Instructions_Improvements.md
+
+# Working copies
+index-new.html
+index-old.html
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
