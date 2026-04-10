@@ -552,28 +552,96 @@
         </div>
         <img src="assets/images/CesiumDroneSim.png" alt="Cesium Drone Simulator" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">3D drone flight simulation over photorealistic terrain using Cesium.js with glTF model and real-time flight path rendering. Deployed to the AirHub Marketplace.</div>
-        <div class="project-card-tech"><span>Cesium.js</span><span>Cesium Ion</span><span>glTF</span><span>3D</span></div>
+        <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Cesium.js</span><span>Cesium Ion</span><span>glTF</span></div>
         <div class="project-card-origin">Airspace Link</div>
       </div>
 
-      <!-- 2. Romulus MI Airspace Analysis — Airspace Link -->
+      <!-- 2. Airspace Obstruction Calculator — Airspace Link -->
+      <div class="project-card" data-category="webapp">
+        <div class="project-card-header">
+          <div class="project-card-title">Airspace Obstruction Calculator</div>
+          <span class="project-card-type">Web App</span>
+        </div>
+        <!-- Conceptual cross-section diagram -->
+        <div style="background: rgba(15,17,23,0.9); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; position: relative; overflow: hidden;">
+          <!-- Grid lines -->
+          <div style="position: absolute; inset: 0; opacity: 0.06; background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 20px 20px;"></div>
+          <!-- Two-column layout: penetrating scenario | clearing scenario -->
+          <div style="display: flex; gap: 12px; position: relative;">
+            <!-- Left column: PENETRATED -->
+            <div style="flex: 1; position: relative; height: 150px;">
+              <!-- Restriction surface line -->
+              <div style="position: absolute; bottom: 60px; left: 0; right: 0; height: 1px; background: var(--accent); opacity: 0.5;"></div>
+              <div style="position: absolute; bottom: 61px; left: 0; right: 0; height: 30px; background: linear-gradient(180deg, rgba(56,189,248,0.06), transparent);"></div>
+              <!-- Ground -->
+              <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 14px; background: linear-gradient(180deg, rgba(52,211,153,0.12), rgba(52,211,153,0.04)); border-top: 1px solid rgba(52,211,153,0.25);"></div>
+              <!-- Obstruction bar — penetrates above surface -->
+              <div style="position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); width: 20px; height: 80px; background: linear-gradient(180deg, rgba(248,113,113,0.5), rgba(248,113,113,0.15)); border: 1px solid rgba(248,113,113,0.4); border-radius: 2px 2px 0 0;"></div>
+              <!-- Penetration hatching above surface line -->
+              <div style="position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); width: 20px; height: 34px; background: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(248,113,113,0.2) 3px, rgba(248,113,113,0.2) 6px);"></div>
+              <!-- Labels -->
+              <div style="position: absolute; top: 6px; left: 0; right: 0; text-align: center;">
+                <div style="font-family: var(--mono); font-size: 10px; color: #f87171; font-weight: 600;">PENETRATED</div>
+                <div style="font-family: var(--mono); font-size: 8px; color: rgba(248,113,113,0.6); margin-top: 1px;">by 27 ft</div>
+              </div>
+              <!-- Surface label -->
+              <div style="position: absolute; bottom: 63px; left: 4px; font-family: var(--mono); font-size: 7px; color: var(--accent); opacity: 0.7;">320 ft</div>
+            </div>
+            <!-- Divider -->
+            <div style="width: 1px; background: var(--border); align-self: stretch;"></div>
+            <!-- Right column: CLEAR -->
+            <div style="flex: 1; position: relative; height: 150px;">
+              <!-- Restriction surface line -->
+              <div style="position: absolute; bottom: 60px; left: 0; right: 0; height: 1px; background: var(--accent); opacity: 0.5;"></div>
+              <div style="position: absolute; bottom: 61px; left: 0; right: 0; height: 30px; background: linear-gradient(180deg, rgba(56,189,248,0.06), transparent);"></div>
+              <!-- Ground -->
+              <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 14px; background: linear-gradient(180deg, rgba(52,211,153,0.12), rgba(52,211,153,0.04)); border-top: 1px solid rgba(52,211,153,0.25);"></div>
+              <!-- Obstruction bar — clearly below surface -->
+              <div style="position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); width: 20px; height: 26px; background: linear-gradient(180deg, rgba(52,211,153,0.4), rgba(52,211,153,0.12)); border: 1px solid rgba(52,211,153,0.35); border-radius: 2px 2px 0 0;"></div>
+              <!-- Labels -->
+              <div style="position: absolute; top: 6px; left: 0; right: 0; text-align: center;">
+                <div style="font-family: var(--mono); font-size: 10px; color: var(--green); font-weight: 600;">CLEAR</div>
+                <div style="font-family: var(--mono); font-size: 8px; color: rgba(52,211,153,0.6); margin-top: 1px;">by 84 ft</div>
+              </div>
+              <!-- Surface label -->
+              <div style="position: absolute; bottom: 63px; left: 4px; font-family: var(--mono); font-size: 7px; color: var(--accent); opacity: 0.7;">320 ft</div>
+            </div>
+          </div>
+          <!-- Legend -->
+          <div style="margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="width: 16px; height: 2px; background: var(--accent); opacity: 0.7;"></div>
+              <span style="font-family: var(--mono); font-size: 8px; color: var(--text-3);">Restriction Surface</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="width: 10px; height: 10px; background: rgba(52,211,153,0.15); border-top: 1px solid rgba(52,211,153,0.3);"></div>
+              <span style="font-family: var(--mono); font-size: 8px; color: var(--text-3);">Ground Elevation</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="width: 10px; height: 10px; background: rgba(248,113,113,0.3); border: 1px solid rgba(248,113,113,0.4); border-radius: 1px;"></div>
+              <span style="font-family: var(--mono); font-size: 8px; color: var(--text-3);">Obstruction</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card-desc">Web application for evaluating airspace obstruction risk. Computes ground elevation at a proposed structure location and compares its AGL height against overlapping FAA restriction surfaces to determine penetration or clearance, with an interactive cross-section diagram.</div>
+        <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Elevation Service</span><span>JavaScript</span><span>Chart.js</span></div>
+        <div class="project-card-origin">Airspace Link</div>
+      </div>
+
+      <!-- 3. Romulus MI Airspace Analysis — Airspace Link -->
       <div class="project-card" data-category="esri">
         <div class="project-card-header">
           <div class="project-card-title">Romulus MI Airspace & Ground Risk Analysis</div>
           <span class="project-card-type">ESRI</span>
         </div>
-        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-          <div style="flex: 1; text-align: center;">
-            <img src="assets/images/RomulusBefore.png" alt="Before expansion" loading="lazy" style="width:100%; border-radius:6px; border:1px solid var(--border);">
-            <div style="font-family: var(--mono); font-size: 9px; color: var(--text-3); margin-top: 4px;">BEFORE</div>
-          </div>
-          <div style="flex: 1; text-align: center;">
-            <img src="assets/images/RomulusAfter.png" alt="After expansion" loading="lazy" style="width:100%; border-radius:6px; border:1px solid var(--border);">
-            <div style="font-family: var(--mono); font-size: 9px; color: var(--text-3); margin-top: 4px;">AFTER</div>
-          </div>
+        <div style="margin-bottom: 12px;">
+          <div style="font-family: var(--mono); font-size: 9px; color: var(--text-3); margin-bottom: 4px;">BEFORE</div>
+          <img src="assets/images/RomulusBefore.png" alt="Before expansion" loading="lazy" style="width:100%; border-radius:6px; border:1px solid var(--border);">
+          <div style="font-family: var(--mono); font-size: 9px; color: var(--text-3); margin-top: 10px; margin-bottom: 4px;">AFTER</div>
+          <img src="assets/images/RomulusAfter.png" alt="After expansion" loading="lazy" style="width:100%; border-radius:6px; border:1px solid var(--border);">
         </div>
         <div class="project-card-desc">Led a spatial analysis that elevated 34 FAA ceiling grids and expanded legal drone flight area by nearly 14 square miles in Romulus — directly benefiting 5,500+ residents and nearly 300 businesses.</div>
-        <div class="project-card-tech"><span>ArcGIS Pro</span><span>Spatial Analysis</span><span>FAA Data</span><span>Python</span></div>
+        <div class="project-card-tech"><span>ArcGIS Pro</span><span>AirHub HexGen</span><span>FAA API</span><span>PostgreSQL</span></div>
         <a href="https://www.detroitaero.org/news/in-the-news/romulus-soars-into-the-future/" target="_blank" class="project-card-link">Read coverage &nearr;</a>
         <div class="project-card-origin">Airspace Link</div>
       </div>
@@ -586,7 +654,7 @@
         </div>
         <img src="assets/images/UASIntegrationFramework.png" alt="UAS Integration Framework" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Automated a workflow to assess community drone program readiness and map customers onto a 6-phase UAS integration framework. Led to increased customer retention and reduction in onboarding time.</div>
-        <div class="project-card-tech"><span>ArcGIS Online</span><span>Python</span><span>Automation</span></div>
+        <div class="project-card-tech"><span>Survey123</span><span>Power Automate</span><span>ArcGIS Online</span><span>Report Templates</span></div>
         <a href="https://airspacelink.com/hubfs/UAS%20READINESS%20ASSESSMENT_V2.pdf" target="_blank" class="project-card-link">View assessment framework &nearr;</a>
         <div class="project-card-origin">Airspace Link</div>
       </div>
@@ -599,7 +667,7 @@
         </div>
         <img src="assets/images/ArlingtonStoryMap.png" alt="Arlington Multimodal Delivery Demonstration" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Multimodal Delivery Demonstration Story Map for the City of Arlington, TX — investigating the feasibility of fully electric multimodal last-mile delivery via autonomous vehicles and UAS for underserved communities.</div>
-        <div class="project-card-tech"><span>ArcGIS StoryMaps</span><span>Network Analysis</span><span>ArcGIS Online</span></div>
+        <div class="project-card-tech"><span>ArcGIS StoryMaps</span><span>Network Analyst</span><span>routingpy</span><span>ArcGIS Pro</span></div>
         <a href="https://storymaps.arcgis.com/stories/cfcc5ef2300e4d64a98de56e5e8cb763" target="_blank" class="project-card-link">View Story Map &nearr;</a>
         <div class="project-card-origin">Airspace Link</div>
       </div>
@@ -611,8 +679,8 @@
           <span class="project-card-type">ESRI</span>
         </div>
         <img src="assets/images/RochesterDronesESRIApp.png" alt="Rochester Drone App" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
-        <div class="project-card-desc">Drone suitability analysis and flight planning application for municipal UAS operations.</div>
-        <div class="project-card-tech"><span>Experience Builder</span><span>Scene Viewer</span><span>ModelBuilder</span><span>Survey123</span></div>
+        <div class="project-card-desc">Drone suitability analysis and flight planning application for municipal UAS operations with 3D scene integration and field data collection.</div>
+        <div class="project-card-tech"><span>Experience Builder</span><span>3D Scenes</span><span>Suitability Modeler</span><span>Dashboards</span><span>Survey123</span></div>
         <a href="https://experience.arcgis.com/experience/99eb6d0adca04715afe95f7b3448a7c6" target="_blank" class="project-card-link">View live app &nearr;</a>
         <div class="project-card-origin">City of Rochester, NH</div>
       </div>
@@ -647,13 +715,13 @@
           <span class="project-card-type">Case Study</span>
         </div>
         <img src="https://raw.githubusercontent.com/jacob-hogue/geoai-matrix-decomposition-solver/main/outputs/compression_comparison.png" alt="SVD Compression Comparison" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
-        <div class="project-card-desc">Matrix decomposition applied to satellite imagery. Compressed a 23MB Landsat scene to 4MB while retaining 95% of spectral information.</div>
+        <div class="project-card-desc">Matrix decomposition applied to satellite imagery. Compressed a 23MB Sentinel-2 scene to 4MB while retaining 95% of spectral information.</div>
         <div class="project-card-tech"><span>Python</span><span>NumPy</span><span>rasterio</span><span>SVD</span></div>
         <button class="case-study-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '- Hide details' : '+ View case study';">+ View case study</button>
         <div class="case-study-detail">
           <dl>
             <dt>Problem</dt>
-            <dd>Satellite imagery files are massive. Needed a way to compress multi-band Landsat scenes for faster transmission and storage without losing critical spectral data.</dd>
+            <dd>Satellite imagery files are massive. Needed a way to compress multi-band Sentinel-2 scenes for faster transmission and storage without losing critical spectral data.</dd>
             <dt>Approach</dt>
             <dd>Applied Singular Value Decomposition (SVD) per-band, iterating over rank thresholds to find the optimal compression-to-fidelity tradeoff for each spectral band.</dd>
             <dt>Outcome</dt>
@@ -710,8 +778,8 @@
           <span class="project-card-type">ESRI</span>
         </div>
         <img src="assets/images/VehicleMaintenanceDash.JPG" alt="Vehicle Maintenance" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
-        <div class="project-card-desc">Fleet management application tracking vehicle maintenance schedules, budgets, and real-time location.</div>
-        <div class="project-card-tech"><span>Dashboards</span><span>Survey123</span><span>Arcade</span><span>ArcGIS Python API</span></div>
+        <div class="project-card-desc">Fleet management application tracking vehicle maintenance schedules, budgets, and real-time location via Verizon fleet sensors.</div>
+        <div class="project-card-tech"><span>Dashboards</span><span>Survey123</span><span>Arcade</span><span>ArcGIS Python API</span><span>Fleet Sensors</span></div>
         <div class="project-card-origin">City of Rochester, NH</div>
       </div>
 
@@ -722,8 +790,8 @@
           <span class="project-card-type">ESRI</span>
         </div>
         <img src="assets/images/ServiceRequestWorkOrder.png" alt="Service Request App" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
-        <div class="project-card-desc">End-to-end workflow for city staff to submit, track, and manage infrastructure service requests and work orders.</div>
-        <div class="project-card-tech"><span>Web App Builder</span><span>Collector</span><span>Arcade</span><span>SQL Server</span></div>
+        <div class="project-card-desc">End-to-end workflow for city staff to submit, track, and manage infrastructure service requests and work orders backed by an Enterprise geodatabase.</div>
+        <div class="project-card-tech"><span>Web App Builder</span><span>Collector</span><span>Arcade</span><span>ArcGIS Enterprise</span><span>SQL Server</span></div>
         <div class="project-card-origin">City of Rochester, NH</div>
       </div>
 
@@ -735,7 +803,7 @@
         </div>
         <img src="assets/images/CAFires.png" alt="CA Destructive Wildfires" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Interactive map of California's 10 most destructive wildfires with blend modes, feature effects, and animated transitions.</div>
-        <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Blend Modes</span><span>Animation</span></div>
+        <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Feature Effects</span><span>Blend Modes</span><span>JavaScript</span></div>
         <a href="https://jacob-hogue.github.io/CA-Destructive-Wildfires/" target="_blank" class="project-card-link">View live &nearr;</a>
         <div class="project-card-origin">Personal</div>
       </div>
@@ -748,7 +816,7 @@
         </div>
         <img src="assets/images/GlobalHurricanes.png" alt="Global Hurricanes" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Interactive visualization of 180 years of global hurricane tracks with temporal filtering and path animation.</div>
-        <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>JavaScript</span><span>CSS</span></div>
+        <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Temporal Filtering</span><span>Feature Layer</span><span>JavaScript</span></div>
         <a href="https://jacob-hogue.github.io/GlobalHurricanes/" target="_blank" class="project-card-link">View live &nearr;</a>
         <div class="project-card-origin">Personal</div>
       </div>
@@ -760,8 +828,8 @@
           <span class="project-card-type">ESRI</span>
         </div>
         <img src="assets/images/StreetSweeperProgress.png" alt="Street Sweeper" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
-        <div class="project-card-desc">Operational map tracking street sweeper coverage with calculated curb miles and estimated sediment collected.</div>
-        <div class="project-card-tech"><span>Related Tables</span><span>Domains</span><span>Arcade</span><span>Map Viewer</span></div>
+        <div class="project-card-desc">Operational map tracking street sweeper coverage with calculated curb miles and estimated sediment collected, updated via related tables linked to the feature layer.</div>
+        <div class="project-card-tech"><span>ArcGIS Online</span><span>Related Tables</span><span>Arcade</span><span>Map Viewer</span></div>
         <div class="project-card-origin">City of Rochester, NH</div>
       </div>
 
@@ -785,7 +853,7 @@
         </div>
         <img src="assets/images/Spyglass.png" alt="Spyglass Blend Modes" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Interactive spyglass effect using ArcGIS blend modes to reveal different basemap layers through a movable lens.</div>
-        <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Blend Modes</span><span>JavaScript</span></div>
+        <div class="project-card-tech"><span>ArcGIS JS SDK</span><span>Feature Effects</span><span>Blend Modes</span><span>JavaScript</span></div>
         <a href="https://jacob-hogue.github.io/Spyglass/" target="_blank" class="project-card-link">View live &nearr;</a>
         <div class="project-card-origin">Personal</div>
       </div>
@@ -1152,18 +1220,6 @@
         <div class="contact-card-label">Location</div>
         <div class="contact-card-value">Massachusetts, USA</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Pre-Footer CTA -->
-<section style="padding: 48px 0;">
-  <div class="container" style="text-align: center;">
-    <div style="font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: var(--text-1); margin-bottom: 12px;">Want to connect?</div>
-    <p style="font-size: 15px; color: var(--text-2); max-width: 480px; margin: 0 auto 28px; line-height: 1.7;">I'm always happy to talk geospatial, AI, or interesting problems worth solving.</p>
-    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-      <a href="mailto:everythingspatialgis@gmail.com" class="btn btn-primary">Get in touch</a>
-      <a href="https://ai-engineer-roadmap-ee841.web.app/projects" target="_blank" class="btn btn-outline">View AI Roadmap &nearr;</a>
     </div>
   </div>
 </section>
