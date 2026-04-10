@@ -146,6 +146,25 @@
     .hero-stat-value { font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--text-1); }
     .hero-stat-label { font-size: 12px; color: var(--text-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
 
+    /* ─── D3 Globe ─── */
+    #globe-container {
+      width: 220px; height: 220px; margin: 0 auto;
+      filter: drop-shadow(0 0 20px rgba(56,189,248,0.2));
+    }
+    #globe-container svg { width: 100%; height: 100%; }
+    #globe-container .sphere { fill: rgba(15,17,23,0.6); stroke: rgba(56,189,248,0.5); stroke-width: 1; }
+    #globe-container .graticule { fill: none; stroke: rgba(56,189,248,0.18); stroke-width: 0.4; }
+    #globe-container .land { fill: rgba(56,189,248,0.12); stroke: rgba(56,189,248,0.55); stroke-width: 0.5; }
+    #globe-container .location-dot {
+      fill: #34d399; stroke: rgba(52,211,153,0.5); stroke-width: 4;
+      filter: drop-shadow(0 0 4px rgba(52,211,153,0.8));
+    }
+    @keyframes locationPulse {
+      0%, 100% { stroke-opacity: 0.3; stroke-width: 3; }
+      50% { stroke-opacity: 0.7; stroke-width: 6; }
+    }
+    #globe-container .location-dot { animation: locationPulse 2s ease-in-out infinite; }
+
     /* ─── Roadmap Banner ─── */
     .roadmap-banner {
       background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(129,140,248,0.04));
@@ -349,6 +368,7 @@
       .hero-content > div:first-child { min-width: 0 !important; }
       .hero-content > div:last-child { align-self: center; order: -1; }
       .hero-content img { width: 160px !important; height: 200px !important; }
+      #globe-container { width: 160px !important; height: 160px !important; }
       .hero h1 { font-size: 32px !important; }
       .hero-stats { flex-wrap: wrap; gap: 24px; }
       .hero-actions { flex-direction: column; }
@@ -428,8 +448,9 @@
         <a href="#positioning" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Why Geo+AI</a>
       </div>
       </div>
-      <div class="animate delay-2" style="flex-shrink: 0;">
+      <div class="animate delay-2" style="flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 20px;">
         <img src="assets/images/Me.jpg" alt="Jacob Hogue" style="width: 200px; height: 250px; border-radius: 16px; object-fit: cover; object-position: top; border: 2px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+        <div id="globe-container" aria-hidden="true"></div>
       </div>
     </div>
       <div class="hero-stats animate delay-4">
@@ -1323,6 +1344,96 @@ function filterProjects(category, btn) {
   document.querySelectorAll('#project-filters .skill-cat').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
+</script>
+
+<!-- D3 Globe -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-geo@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script>
+(function() {
+  const container = document.getElementById('globe-container');
+  if (!container) return;
+
+  const width = 220, height = 220;
+  const svg = d3.select(container).append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`);
+
+  const projection = d3.geoOrthographic()
+    .scale(100)
+    .translate([width / 2, height / 2])
+    .clipAngle(90);
+
+  const path = d3.geoPath(projection);
+
+  // Locations of work
+  const locations = [
+    { name: 'Rochester, NH', coords: [-70.9753, 43.3045] },
+    { name: 'Keene, NH', coords: [-72.2779, 42.9336] },
+    { name: 'Concord, NH', coords: [-71.5376, 43.2081] },
+    { name: 'Portland, ME', coords: [-70.2553, 43.6591] },
+    { name: 'Fitchburg, MA', coords: [-71.8023, 42.5834] },
+    { name: 'Arlington, TX', coords: [-97.1081, 32.7357] },
+    { name: 'Detroit, MI', coords: [-83.0458, 42.3314] },
+    { name: 'Kansas City', coords: [-94.5786, 39.0997] },
+    { name: 'Ontario, CA', coords: [-117.6509, 34.0633] },
+    { name: 'Dubai, UAE', coords: [55.2708, 25.2048] },
+    { name: 'Japan', coords: [138.2529, 36.2048] }
+  ];
+
+  // Sphere
+  svg.append('path')
+    .datum({ type: 'Sphere' })
+    .attr('class', 'sphere')
+    .attr('d', path);
+
+  // Graticule
+  const graticule = d3.geoGraticule10();
+  const graticulePath = svg.append('path')
+    .datum(graticule)
+    .attr('class', 'graticule')
+    .attr('d', path);
+
+  // Load world topology
+  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json').then(world => {
+    const land = topojson.feature(world, world.objects.land);
+    const landPath = svg.append('path')
+      .datum(land)
+      .attr('class', 'land')
+      .attr('d', path);
+
+    // Location dots
+    const dots = svg.selectAll('.location-dot')
+      .data(locations)
+      .enter().append('circle')
+      .attr('class', 'location-dot')
+      .attr('r', 2.5);
+
+    // Animation loop
+    let rotation = [-75, -20, 0];
+    function rotate() {
+      rotation[0] = (rotation[0] + 0.15) % 360;
+      projection.rotate(rotation);
+      svg.select('.sphere').attr('d', path);
+      graticulePath.attr('d', path);
+      landPath.attr('d', path);
+      dots
+        .attr('cx', d => projection(d.coords)[0])
+        .attr('cy', d => projection(d.coords)[1])
+        .style('display', d => {
+          const coords = projection(d.coords);
+          if (!coords) return 'none';
+          // Hide dots on the back of the globe
+          const geoPath = d3.geoPath(projection);
+          const centroid = projection.invert([width / 2, height / 2]);
+          const distance = d3.geoDistance(d.coords, centroid);
+          return distance > Math.PI / 2 ? 'none' : 'block';
+        });
+      requestAnimationFrame(rotate);
+    }
+    rotate();
+  });
+})();
 </script>
 
 <!-- Scroll animations -->
