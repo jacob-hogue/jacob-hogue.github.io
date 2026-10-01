@@ -15,7 +15,6 @@ Source code for my personal portfolio hosted at [jacob-hogue.github.io](https://
 
 - **Hero** - Overview, stats, and quick navigation
 - **Social Proof** - Testimonials and employer logos
-- **AI Roadmap** - 35-project public learning journey
 - **Projects** - Filterable portfolio with case studies
 - **Why Geo+AI** - Positioning at the intersection of geospatial and AI
 - **Skills** - Tiered by proficiency level

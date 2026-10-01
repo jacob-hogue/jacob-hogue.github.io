@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jacob Hogue — Geospatial & AI Engineer</title>
-  <meta name="description" content="Geospatial engineer building toward AI/ML. 8+ years GIS experience, 35-project AI roadmap, and deep ESRI + open-source spatial expertise.">
+  <meta name="description" content="Geospatial engineer building toward AI/ML. 8+ years GIS experience, production spatial applications, and deep ESRI + open-source expertise.">
   <meta property="og:title" content="Jacob Hogue — Geospatial & AI Engineer">
-  <meta property="og:description" content="Geospatial engineer building toward AI/ML. 8+ years GIS, ESRI + open-source spatial expertise, and a 35-project AI roadmap built in public.">
+  <meta property="og:description" content="Geospatial engineer building toward AI/ML. 8+ years GIS, ESRI + open-source spatial expertise, and production spatial applications.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jacob-hogue.github.io/">
   <meta property="og:image" content="https://jacob-hogue.github.io/assets/images/Me.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Jacob Hogue — Geospatial & AI Engineer">
-  <meta name="twitter:description" content="Geospatial engineer building toward AI/ML. 8+ years GIS, ESRI + open-source spatial expertise, and a 35-project AI roadmap built in public.">
+  <meta name="twitter:description" content="Geospatial engineer building toward AI/ML. 8+ years GIS, ESRI + open-source spatial expertise, and production spatial applications.">
   <meta name="twitter:image" content="https://jacob-hogue.github.io/assets/images/Me.jpg">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230f1117'/%3E%3Ctext x='32' y='42' font-family='system-ui,-apple-system,sans-serif' font-size='28' font-weight='700' fill='%2338bdf8' text-anchor='middle'%3EJH%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,28 +164,6 @@
       50% { stroke-opacity: 0.7; stroke-width: 6; }
     }
     #globe-container .location-dot { animation: locationPulse 2s ease-in-out infinite; }
-
-    /* ─── Roadmap Banner ─── */
-    .roadmap-banner {
-      background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(129,140,248,0.04));
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 32px; flex-wrap: wrap;
-    }
-    .roadmap-info { max-width: 500px; }
-    .roadmap-info h3 { font-size: 22px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
-    .roadmap-info p { font-size: 14px; color: var(--text-2); line-height: 1.6; }
-    .roadmap-metrics { display: flex; gap: 32px; }
-    .roadmap-metric { text-align: center; }
-    .roadmap-metric .val { font-family: var(--mono); font-size: 32px; font-weight: 700; color: var(--accent); }
-    .roadmap-metric .lbl { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
-    .roadmap-live {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: var(--mono); font-size: 11px; color: var(--green);
-      margin-top: 12px;
-    }
-    .roadmap-live .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
 
     /* ─── Projects ─── */
     .project-grid {
@@ -373,8 +351,6 @@
       .hero-stats { flex-wrap: wrap; gap: 24px; }
       .hero-actions { flex-direction: column; }
       .hero-actions .btn { width: 100%; justify-content: center; }
-      .roadmap-banner { flex-direction: column; text-align: center; }
-      .roadmap-metrics { justify-content: center; }
       .contact-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
@@ -392,7 +368,6 @@
     <div class="nav-logo">jacob<span>.</span>hogue</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#positioning">Why Geo+AI</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -409,7 +384,6 @@
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <a href="#about" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">About</a>
-  <a href="#roadmap" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Roadmap</a>
   <a href="#projects" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Projects</a>
   <a href="#positioning" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Why Geo+AI</a>
   <a href="#experience" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Experience</a>
@@ -428,11 +402,11 @@
         Geospatial engineer<br>building toward <span class="gradient">AI/ML</span>
       </h1>
       <p class="animate delay-2">
-        I solve geospatial problems at Airspace Link and I am building a 35-project AI engineering roadmap in public. Few engineers work across both spatial systems and machine learning. I'm building at that intersection.
+        I solve geospatial problems at Airspace Link and build AI and data engineering projects in public. Few engineers work across both spatial systems and machine learning. I'm building at that intersection.
       </p>
       <div class="hero-actions animate delay-3">
-        <a href="https://ai-engineer-roadmap-ee841.web.app/projects" target="_blank" class="btn btn-primary">
-          View AI Roadmap &nearr;
+        <a href="#projects" class="btn btn-primary">
+          View Projects
         </a>
         <a href="mailto:everythingspatialgis@gmail.com" class="btn btn-outline">
           Get in touch
@@ -454,10 +428,6 @@
       </div>
     </div>
       <div class="hero-stats animate delay-4">
-        <div>
-          <div class="hero-stat-value">35</div>
-          <div class="hero-stat-label">Project Roadmap</div>
-        </div>
         <div>
           <div class="hero-stat-value">8+</div>
           <div class="hero-stat-label">Years GIS</div>
@@ -530,50 +500,17 @@
   </div>
 </section>
 
-<!-- Roadmap Banner -->
-<section class="section" id="roadmap">
-  <div class="container">
-    <div class="section-label">AI Engineering Roadmap</div>
-    <div class="roadmap-banner">
-      <div class="roadmap-info">
-        <h3>35-Project Learning Journey</h3>
-        <p>
-          A self-directed curriculum covering Python, deep learning, transformers, RAG systems, multi-agent AI, MLOps, cloud infrastructure, and geospatial AI. Every project is built, tested, and published publicly.
-        </p>
-        <div class="roadmap-live" style="margin-top: 16px;"><span class="dot"></span> Building in public &middot; Updated weekly</div>
-        <a href="https://ai-engineer-roadmap-ee841.web.app/projects" target="_blank" class="btn btn-primary" style="margin-top: 20px;">
-          Track my progress live &nearr;
-        </a>
-      </div>
-      <div class="roadmap-metrics">
-        <div class="roadmap-metric">
-          <div class="val">11</div>
-          <div class="lbl">Phases</div>
-        </div>
-        <div class="roadmap-metric">
-          <div class="val">35</div>
-          <div class="lbl">Projects</div>
-        </div>
-        <div class="roadmap-metric">
-          <div class="val">85</div>
-          <div class="lbl">Topics</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Projects -->
 <section class="section" id="projects">
   <div class="container">
     <div class="section-label">Featured Projects</div>
     <h2 class="section-title">Built and shipped</h2>
-    <p class="section-desc">AI roadmap projects, web applications, ESRI solutions, and cartography. Featured projects include expandable case studies.</p>
+    <p class="section-desc">AI and data engineering projects, web applications, ESRI solutions, and cartography. Featured projects include expandable case studies.</p>
 
     <!-- Filter tabs -->
     <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; margin-bottom: 24px;" id="project-filters">
       <button class="skill-cat active" onclick="filterProjects('all', this)">All</button>
-      <button class="skill-cat" onclick="filterProjects('roadmap', this)">AI Roadmap</button>
+      <button class="skill-cat" onclick="filterProjects('aidata', this)">AI &amp; Data</button>
       <button class="skill-cat" onclick="filterProjects('webapp', this)">Web Apps</button>
       <button class="skill-cat" onclick="filterProjects('esri', this)">ESRI Apps</button>
       <button class="skill-cat" onclick="filterProjects('maps', this)">Maps</button>
@@ -779,7 +716,7 @@
       </div>
 
       <!-- 6. Async Data Pipeline — Case Study -->
-      <div class="project-card featured" data-category="roadmap">
+      <div class="project-card featured" data-category="aidata">
         <div class="project-card-header">
           <div class="project-card-title">Async Data Pipeline</div>
           <span class="project-card-type">Case Study</span>
@@ -802,7 +739,7 @@
       </div>
 
       <!-- 5. SVD Image Compression — Case Study -->
-      <div class="project-card featured" data-category="roadmap">
+      <div class="project-card featured" data-category="aidata">
         <div class="project-card-header">
           <div class="project-card-title">SVD Image Compression</div>
           <span class="project-card-type">Case Study</span>
@@ -852,10 +789,10 @@
       </div>
 
       <!-- 7. Climate Station Analysis — ETL + testing -->
-      <div class="project-card" data-category="roadmap">
+      <div class="project-card" data-category="aidata">
         <div class="project-card-header">
           <div class="project-card-title">Climate Station Analysis</div>
-          <span class="project-card-type">Roadmap</span>
+          <span class="project-card-type">AI &amp; Data</span>
         </div>
         <img src="https://raw.githubusercontent.com/jacob-hogue/geoai-climate-station-analysis/main/plots/temperature_timeseries.png" alt="Climate Station Analysis" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Validated ETL pipeline for geospatial climate data with automated quality gates. Schema integrity, coordinate bounds, and temporal completeness.</div>
@@ -865,10 +802,10 @@
       </div>
 
       <!-- 8. Probability Dashboard — ML foundations -->
-      <div class="project-card" data-category="roadmap">
+      <div class="project-card" data-category="aidata">
         <div class="project-card-header">
           <div class="project-card-title">Probability Dashboard</div>
-          <span class="project-card-type">Roadmap</span>
+          <span class="project-card-type">AI &amp; Data</span>
         </div>
         <img src="https://raw.githubusercontent.com/jacob-hogue/geoai-probability-distribution-dashboard/master/images/beta_update.png" alt="Probability Dashboard" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Interactive notebook exploring Beta, Normal, and Dirichlet distributions through geospatial uncertainty problems.</div>
@@ -877,10 +814,10 @@
         <div class="project-card-origin">Personal</div>
       </div>
 
-      <div class="project-card featured" data-category="roadmap">
+      <div class="project-card featured" data-category="aidata">
         <div class="project-card-header">
           <div class="project-card-title">Spatial SQL Optimization</div>
-          <span class="project-card-type">Roadmap</span>
+          <span class="project-card-type">AI &amp; Data</span>
         </div>
         <img src="https://raw.githubusercontent.com/jacob-hogue/geoai-spatial-sql/main/results/speedup_chart.png" alt="Spatial SQL Speedup Chart" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">Benchmarked five spatial queries on 500K OpenStreetMap features in PostGIS. Three hit 10x+ speedups through indexing, CTEs, and window functions. One dropped from 6.5 minutes to 5 seconds.</div>
@@ -889,10 +826,10 @@
         <div class="project-card-origin">Personal</div>
       </div>
 
-      <div class="project-card featured" data-category="roadmap">
+      <div class="project-card featured" data-category="aidata">
         <div class="project-card-header">
           <div class="project-card-title">Data Quality Pipeline</div>
-          <span class="project-card-type">Roadmap</span>
+          <span class="project-card-type">AI &amp; Data</span>
         </div>
         <img src="https://raw.githubusercontent.com/jacob-hogue/geoai-data-quality-pipeline/main/reports/quality_dashboard.png" alt="Earthquake Data Quality Dashboard" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:12px; border:1px solid var(--border);">
         <div class="project-card-desc">dbt pipeline on DuckDB ingesting 33K USGS earthquake events with 28 automated quality tests. Coordinate bounds, magnitude ranges, null detection, and duplicate checks with CI that blocks merges on failure.</div>
@@ -1065,11 +1002,6 @@
 
     </div>
 
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="https://ai-engineer-roadmap-ee841.web.app/projects" target="_blank" class="btn btn-outline">
-        View all 35 AI roadmap projects &nearr;
-      </a>
-    </div>
   </div>
 </section>
 
@@ -1110,7 +1042,7 @@
           The real-world applications are massive: autonomous mobility, climate modeling, infrastructure monitoring, precision agriculture, and disaster response all depend on the intersection of spatial reasoning and machine learning.
         </p>
         <p>
-          I've spent <strong style="color: var(--text-1);">8+ years</strong> in professional GIS building enterprise systems, automating spatial workflows, and shipping production applications. Now I'm building toward AI/ML engineering with a <strong style="color: var(--text-1);">35-project public roadmap</strong> covering deep learning, transformers, RAG, and MLOps.
+          I've spent <strong style="color: var(--text-1);">8+ years</strong> in professional GIS building enterprise systems, automating spatial workflows, and shipping production applications. Now I'm building toward AI/ML engineering through <strong style="color: var(--text-1);">projects built in public</strong> covering deep learning, data pipelines, RAG, and MLOps.
         </p>
       </div>
 
@@ -1484,7 +1416,7 @@ function filterProjects(category, btn) {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.project-card, .skill-group, .timeline-item, .contact-card, .roadmap-banner, #positioning, #social-proof .project-card').forEach((el, i) => {
+  document.querySelectorAll('.project-card, .skill-group, .timeline-item, .contact-card, #positioning, #social-proof .project-card').forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
