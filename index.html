@@ -290,6 +290,11 @@
       border: 1px solid var(--border); color: var(--text-2); cursor: default;
     }
     .skill-cat.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+    #project-filters .skill-cat { background: transparent; font-family: inherit; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+    #project-filters .skill-cat:hover { border-color: var(--border-hover); color: var(--text-1); }
+    #project-filters .skill-cat.active, #project-filters .skill-cat.active:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+    #project-filters .skill-cat:focus-visible, .projects-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .projects-more { display: none; }
 
     /* ─── Experience ─── */
     .timeline { margin-top: 40px; }
@@ -370,13 +375,26 @@
     @media (max-width: 768px) {
       .hero-content { flex-direction: column !important; gap: 24px !important; }
       .hero-content > div:first-child { min-width: 0 !important; }
-      .hero-content > div:last-child { align-self: center; order: -1; }
-      .hero-content img { width: 160px !important; height: 200px !important; }
-      #globe-container { width: 160px !important; height: 160px !important; }
-      .hero h1 { font-size: 32px !important; }
-      .hero-stats { flex-wrap: wrap; gap: 24px; }
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero { min-height: 0; padding-top: 84px; padding-bottom: 8px; }
+      .hero-content > div:last-child { align-self: flex-start; order: -1; }
+      .hero-content img { width: 104px !important; height: 128px !important; border-radius: 14px !important; }
+      #globe-container { display: none; }
+      .hero h1 { font-size: 32px !important; margin-bottom: 16px; }
+      .hero p { font-size: 16px; margin-bottom: 24px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .hero-actions .btn { width: 100%; justify-content: center; padding: 12px 10px; font-size: 14px; }
+      .hero-actions .btn-primary { grid-column: 1 / -1; }
+      .hero-quicklinks { display: none !important; }
+      .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; padding-top: 24px; }
+      .hero-stat-value { font-size: 22px; }
+      .hero-stat-label { font-size: 10.5px; line-height: 1.4; }
+      .project-grid.collapsed > .project-card:nth-child(n+7) { display: none; }
+      .project-grid.collapsed + .projects-more { display: flex; }
+      .projects-more {
+        width: 100%; margin-top: 16px; padding: 14px; justify-content: center; align-items: center; gap: 8px;
+        font: 600 14px 'DM Sans', sans-serif; color: var(--accent); background: var(--accent-dim);
+        border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; cursor: pointer;
+      }
       .contact-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
@@ -446,7 +464,7 @@
           Resume (PDF)
         </a>
       </div>
-      <div class="animate delay-4" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px;">
+      <div class="hero-quicklinks animate delay-4" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px;">
         <a href="#projects" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Projects</a>
         <a href="#skills" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Skills</a>
         <a href="#experience" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Experience</a>
@@ -548,7 +566,7 @@
       <button class="skill-cat" onclick="filterProjects('papers', this)">Papers</button>
     </div>
 
-    <div class="project-grid" id="project-grid">
+    <div class="project-grid collapsed" id="project-grid">
 
       <!-- 1. Cesium Drone Simulator — Airspace Link, shipped -->
       <div class="project-card featured" data-category="webapp">
@@ -1032,6 +1050,7 @@
       </div>
 
     </div>
+    <button type="button" class="projects-more" onclick="showAllProjects()"><span class="projects-more-label">Show all projects</span> <span aria-hidden="true">&darr;</span></button>
 
   </div>
 </section>
@@ -1332,8 +1351,16 @@
 
 <!-- Project filter -->
 <script>
+function showAllProjects() {
+  document.getElementById('project-grid').classList.remove('collapsed');
+}
+(function () {
+  var n = document.querySelectorAll('#project-grid > .project-card').length, l = document.querySelector('.projects-more-label');
+  if (l && n) l.textContent = 'Show all ' + n + ' projects';
+})();
 function filterProjects(category, btn) {
-  const cards = document.querySelectorAll('.project-card');
+  const cards = document.querySelectorAll('#project-grid .project-card');
+  if (category !== 'all') showAllProjects();
   cards.forEach(card => {
     if (category === 'all' || card.dataset.category === category) {
       card.style.display = '';
