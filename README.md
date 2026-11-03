@@ -1,6 +1,6 @@
 # jacob-hogue.github.io
 
-Personal portfolio site for Jacob Hogue, Geospatial & AI Engineer.
+Personal portfolio site for Jacob Hogue, Senior Geospatial Engineer.
 
 ## About
 
@@ -14,7 +14,7 @@ Source code for my personal portfolio hosted at [jacob-hogue.github.io](https://
 ## Sections
 
 - **Hero** - Overview, stats, and quick navigation
-- **Social Proof** - Testimonials and employer logos
+- **Testimonials** - Supervisor quotes and employer logos
 - **Projects** - Filterable portfolio with case studies
 - **Why Geo+AI** - Positioning at the intersection of geospatial and AI
 - **Skills** - Tiered by proficiency level
