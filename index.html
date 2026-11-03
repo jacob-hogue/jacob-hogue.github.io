@@ -113,6 +113,37 @@
     }
     .nav-cta:hover { background: rgba(56,189,248,0.15); }
 
+    /* ─── Blog link (The Shape-Files) ─── */
+    .nav-blog-wrap { position: relative; display: inline-flex; }
+    .nav-blog { display: inline-flex; align-items: center; gap: 7px; }
+    .blog-mark { flex: none; overflow: visible; }
+    .blog-mark-slab { transition: transform 0.25s ease; }
+    .nav-blog:hover .blog-mark-slab, .nav-blog:focus-visible .blog-mark-slab { transform: translateY(-5px); }
+    .nav-blog:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .nav-tip {
+      position: absolute; top: calc(100% + 12px); right: 0; width: 292px; z-index: 101;
+      padding: 12px 14px; border-radius: 10px; background: #151924; border: 1px solid var(--border-hover);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.45); font-size: 12.5px; line-height: 1.55; color: var(--text-2);
+      opacity: 0; visibility: hidden; transform: translateY(-4px); pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    }
+    .nav-tip::before {
+      content: ""; position: absolute; top: -6px; right: 36px; width: 10px; height: 10px;
+      background: #151924; border-left: 1px solid var(--border-hover); border-top: 1px solid var(--border-hover); transform: rotate(45deg);
+    }
+    .nav-tip strong { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; font-size: 13px; font-weight: 600; color: var(--text-1); }
+    .nav-tip strong::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: #f0449e; }
+    .nav-tip span { display: block; margin-top: 8px; white-space: nowrap; font-family: var(--mono); font-size: 11px; color: var(--accent); }
+    .nav-blog-wrap:hover .nav-tip, .nav-blog:focus-visible + .nav-tip { opacity: 1; visibility: visible; transform: none; }
+    .mobile-blog { display: flex; align-items: flex-start; gap: 10px; }
+    .mobile-blog .blog-mark { margin-top: 3px; }
+    .mobile-blog small { display: block; margin-top: 2px; font-size: 12.5px; font-weight: 400; color: var(--text-3); }
+    @media (prefers-reduced-motion: reduce) { .blog-mark-slab, .nav-tip { transition: none; } }
+    /* three buttons in the bar: tighten spacing on narrower screens so nothing wraps */
+    .nav-links a, .nav-cta { white-space: nowrap; }
+    @media (max-width: 1040px) { .nav-links { gap: 22px; } .nav-cta { padding: 8px 12px; } }
+    @media (max-width: 900px) { .nav-links { gap: 14px; } .nav-cta { padding: 7px 10px; } }
+
     /* ─── Hero ─── */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
@@ -374,6 +405,10 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display: flex; gap: 10px; align-items: center;">
+      <span class="nav-blog-wrap">
+        <a href="https://jacob-hogue.github.io/the-shape-files/" target="_blank" rel="noopener" class="nav-cta nav-blog" aria-describedby="blog-tip"><svg class="blog-mark" viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><polyline points="5,42 32,57.5 59,42" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><polyline points="5,32 32,47.5 59,32" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g class="blog-mark-slab"><polygon points="32,6.5 51.5,17.8 51.5,26.2 32,37.5 5,22" fill="#f0449e" stroke="#f0449e" stroke-width="4" stroke-linejoin="round"/><polygon points="51.5,17.8 44.2,22 51.5,26.2" fill="#f6a8d2" stroke="#f0449e" stroke-width="2" stroke-linejoin="round"/></g></svg>Blog &nearr;</a>
+        <span class="nav-tip" id="blog-tip" role="tooltip"><strong>The Shape-Files</strong>A technical history of GIS, told through the formats, algorithms and systems that built it.<span>jacob-hogue.github.io/the-shape-files</span></span>
+      </span>
       <a href="https://github.com/jacob-hogue" target="_blank" class="nav-cta">GitHub &nearr;</a>
       <a href="https://www.linkedin.com/in/jacobhogue" target="_blank" class="nav-cta">LinkedIn &nearr;</a>
     </div>
@@ -388,6 +423,7 @@
   <a href="#positioning" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Why Geo+AI</a>
   <a href="#experience" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Experience</a>
   <a href="#contact" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Contact</a>
+  <a href="https://jacob-hogue.github.io/the-shape-files/" target="_blank" rel="noopener" class="mobile-blog"><svg class="blog-mark" viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><polyline points="5,42 32,57.5 59,42" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><polyline points="5,32 32,47.5 59,32" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g class="blog-mark-slab"><polygon points="32,6.5 51.5,17.8 51.5,26.2 32,37.5 5,22" fill="#f0449e" stroke="#f0449e" stroke-width="4" stroke-linejoin="round"/><polygon points="51.5,17.8 44.2,22 51.5,26.2" fill="#f6a8d2" stroke="#f0449e" stroke-width="2" stroke-linejoin="round"/></g></svg><span>Blog: The Shape-Files &nearr;<small>A technical history of GIS</small></span></a>
   <a href="https://github.com/jacob-hogue" target="_blank">GitHub &nearr;</a>
   <a href="https://www.linkedin.com/in/jacobhogue" target="_blank">LinkedIn &nearr;</a>
 </div>
