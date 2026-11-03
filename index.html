@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jacob Hogue — Geospatial & AI Engineer</title>
-  <meta name="description" content="Geospatial engineer building toward AI/ML. 8+ years GIS experience, production spatial applications, and deep ESRI + open-source expertise.">
-  <meta property="og:title" content="Jacob Hogue — Geospatial & AI Engineer">
-  <meta property="og:description" content="Geospatial engineer building toward AI/ML. 8+ years GIS, ESRI + open-source spatial expertise, and production spatial applications.">
+  <title>Jacob Hogue · Senior Geospatial Engineer</title>
+  <meta name="description" content="Senior geospatial engineer with 8+ years delivering production GIS, from cloud data pipelines to web apps, with AI and machine learning built into the work.">
+  <meta property="og:title" content="Jacob Hogue · Senior Geospatial Engineer">
+  <meta property="og:description" content="Senior geospatial engineer with 8+ years delivering production GIS, from cloud data pipelines to web apps, with AI and machine learning built into the work.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jacob-hogue.github.io/">
   <meta property="og:image" content="https://jacob-hogue.github.io/assets/images/Me.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jacob Hogue — Geospatial & AI Engineer">
-  <meta name="twitter:description" content="Geospatial engineer building toward AI/ML. 8+ years GIS, ESRI + open-source spatial expertise, and production spatial applications.">
+  <meta name="twitter:title" content="Jacob Hogue · Senior Geospatial Engineer">
+  <meta name="twitter:description" content="Senior geospatial engineer with 8+ years delivering production GIS, from cloud data pipelines to web apps, with AI and machine learning built into the work.">
   <meta name="twitter:image" content="https://jacob-hogue.github.io/assets/images/Me.jpg">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230f1117'/%3E%3Ctext x='32' y='42' font-family='system-ui,-apple-system,sans-serif' font-size='28' font-weight='700' fill='%2338bdf8' text-anchor='middle'%3EJH%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -113,6 +113,37 @@
     }
     .nav-cta:hover { background: rgba(56,189,248,0.15); }
 
+    /* ─── Blog link (The Shape-Files) ─── */
+    .nav-blog-wrap { position: relative; display: inline-flex; }
+    .nav-blog { display: inline-flex; align-items: center; gap: 7px; }
+    .blog-mark { flex: none; overflow: visible; }
+    .blog-mark-slab { transition: transform 0.25s ease; }
+    .nav-blog:hover .blog-mark-slab, .nav-blog:focus-visible .blog-mark-slab { transform: translateY(-5px); }
+    .nav-blog:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .nav-tip {
+      position: absolute; top: calc(100% + 12px); right: 0; width: 292px; z-index: 101;
+      padding: 12px 14px; border-radius: 10px; background: #151924; border: 1px solid var(--border-hover);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.45); font-size: 12.5px; line-height: 1.55; color: var(--text-2);
+      opacity: 0; visibility: hidden; transform: translateY(-4px); pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    }
+    .nav-tip::before {
+      content: ""; position: absolute; top: -6px; right: 36px; width: 10px; height: 10px;
+      background: #151924; border-left: 1px solid var(--border-hover); border-top: 1px solid var(--border-hover); transform: rotate(45deg);
+    }
+    .nav-tip strong { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; font-size: 13px; font-weight: 600; color: var(--text-1); }
+    .nav-tip strong::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: #f0449e; }
+    .nav-tip span { display: block; margin-top: 8px; white-space: nowrap; font-family: var(--mono); font-size: 11px; color: var(--accent); }
+    .nav-blog-wrap:hover .nav-tip, .nav-blog:focus-visible + .nav-tip { opacity: 1; visibility: visible; transform: none; }
+    .mobile-blog { display: flex; align-items: flex-start; gap: 10px; }
+    .mobile-blog .blog-mark { margin-top: 3px; }
+    .mobile-blog small { display: block; margin-top: 2px; font-size: 12.5px; font-weight: 400; color: var(--text-3); }
+    @media (prefers-reduced-motion: reduce) { .blog-mark-slab, .nav-tip { transition: none; } }
+    /* three buttons in the bar: tighten spacing on narrower screens so nothing wraps */
+    .nav-links a, .nav-cta { white-space: nowrap; }
+    @media (max-width: 1040px) { .nav-links { gap: 22px; } .nav-cta { padding: 8px 12px; } }
+    @media (max-width: 900px) { .nav-links { gap: 14px; } .nav-cta { padding: 7px 10px; } }
+
     /* ─── Hero ─── */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
@@ -128,14 +159,9 @@
     .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .hero h1 {
-      font-size: clamp(36px, 5.5vw, 64px); font-weight: 700;
+      font-size: clamp(36px, 4.5vw, 52px); font-weight: 700;
       color: var(--text-1); letter-spacing: -0.03em; line-height: 1.1;
       margin-bottom: 20px;
-    }
-    .hero h1 .gradient {
-      background: linear-gradient(135deg, var(--accent), #818cf8, #c084fc);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
     .hero p { font-size: 17px; color: var(--text-2); line-height: 1.7; margin-bottom: 32px; max-width: 520px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -264,6 +290,11 @@
       border: 1px solid var(--border); color: var(--text-2); cursor: default;
     }
     .skill-cat.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+    #project-filters .skill-cat { background: transparent; font-family: inherit; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+    #project-filters .skill-cat:hover { border-color: var(--border-hover); color: var(--text-1); }
+    #project-filters .skill-cat.active, #project-filters .skill-cat.active:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+    #project-filters .skill-cat:focus-visible, .projects-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .projects-more { display: none; }
 
     /* ─── Experience ─── */
     .timeline { margin-top: 40px; }
@@ -344,13 +375,27 @@
     @media (max-width: 768px) {
       .hero-content { flex-direction: column !important; gap: 24px !important; }
       .hero-content > div:first-child { min-width: 0 !important; }
-      .hero-content > div:last-child { align-self: center; order: -1; }
-      .hero-content img { width: 160px !important; height: 200px !important; }
-      #globe-container { width: 160px !important; height: 160px !important; }
-      .hero h1 { font-size: 32px !important; }
-      .hero-stats { flex-wrap: wrap; gap: 24px; }
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero { min-height: 0; padding-top: 84px; padding-bottom: 8px; }
+      .hero-content > div:last-child { align-self: flex-start; order: -1; }
+      .hero-content img { width: 104px !important; height: 128px !important; border-radius: 14px !important; }
+      #globe-container { display: none; }
+      .hero h1 { font-size: 30px !important; margin-bottom: 16px; }
+      .hero h1 br { display: none; }
+      .hero p { font-size: 16px; margin-bottom: 24px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .hero-actions .btn { width: 100%; justify-content: center; padding: 12px 10px; font-size: 14px; }
+      .hero-actions .btn-primary { grid-column: 1 / -1; }
+      .hero-quicklinks { display: none !important; }
+      .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; padding-top: 24px; }
+      .hero-stat-value { font-size: 22px; }
+      .hero-stat-label { font-size: 10.5px; line-height: 1.4; }
+      .project-grid.collapsed > .project-card:nth-child(n+7) { display: none; }
+      .project-grid.collapsed + .projects-more { display: flex; }
+      .projects-more {
+        width: 100%; margin-top: 16px; padding: 14px; justify-content: center; align-items: center; gap: 8px;
+        font: 600 14px 'DM Sans', sans-serif; color: var(--accent); background: var(--accent-dim);
+        border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; cursor: pointer;
+      }
       .contact-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
@@ -374,6 +419,10 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display: flex; gap: 10px; align-items: center;">
+      <span class="nav-blog-wrap">
+        <a href="https://jacob-hogue.github.io/the-shape-files/" target="_blank" rel="noopener" class="nav-cta nav-blog" aria-describedby="blog-tip"><svg class="blog-mark" viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><polyline points="5,42 32,57.5 59,42" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><polyline points="5,32 32,47.5 59,32" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g class="blog-mark-slab"><polygon points="32,6.5 51.5,17.8 51.5,26.2 32,37.5 5,22" fill="#f0449e" stroke="#f0449e" stroke-width="4" stroke-linejoin="round"/><polygon points="51.5,17.8 44.2,22 51.5,26.2" fill="#f6a8d2" stroke="#f0449e" stroke-width="2" stroke-linejoin="round"/></g></svg>Blog &nearr;</a>
+        <span class="nav-tip" id="blog-tip" role="tooltip"><strong>The Shape-Files</strong>A technical history of GIS, told through the formats, algorithms and systems that built it.<span>jacob-hogue.github.io/the-shape-files</span></span>
+      </span>
       <a href="https://github.com/jacob-hogue" target="_blank" class="nav-cta">GitHub &nearr;</a>
       <a href="https://www.linkedin.com/in/jacobhogue" target="_blank" class="nav-cta">LinkedIn &nearr;</a>
     </div>
@@ -388,6 +437,7 @@
   <a href="#positioning" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Why Geo+AI</a>
   <a href="#experience" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Experience</a>
   <a href="#contact" onclick="document.getElementById('mobile-menu').classList.remove('open'); document.querySelector('.hamburger').classList.remove('active');">Contact</a>
+  <a href="https://jacob-hogue.github.io/the-shape-files/" target="_blank" rel="noopener" class="mobile-blog"><svg class="blog-mark" viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><polyline points="5,42 32,57.5 59,42" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><polyline points="5,32 32,47.5 59,32" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g class="blog-mark-slab"><polygon points="32,6.5 51.5,17.8 51.5,26.2 32,37.5 5,22" fill="#f0449e" stroke="#f0449e" stroke-width="4" stroke-linejoin="round"/><polygon points="51.5,17.8 44.2,22 51.5,26.2" fill="#f6a8d2" stroke="#f0449e" stroke-width="2" stroke-linejoin="round"/></g></svg><span>Blog: The Shape-Files &nearr;<small>A technical history of GIS</small></span></a>
   <a href="https://github.com/jacob-hogue" target="_blank">GitHub &nearr;</a>
   <a href="https://www.linkedin.com/in/jacobhogue" target="_blank">LinkedIn &nearr;</a>
 </div>
@@ -397,12 +447,12 @@
   <div class="container">
     <div class="hero-content" style="display: flex; gap: 48px; align-items: flex-start; max-width: 100%; flex-wrap: wrap;">
       <div style="flex: 1; min-width: 320px;">
-      <div class="hero-badge animate"><span class="dot"></span> Building AI projects in public</div>
+      <div class="hero-badge animate"><span class="dot"></span> Currently at Airspace Link</div>
       <h1 class="animate delay-1">
-        Geospatial engineer<br>building toward <span class="gradient">AI/ML</span>
+        Senior geospatial engineer <br>building with AI
       </h1>
       <p class="animate delay-2">
-        I solve geospatial problems at Airspace Link and build AI and data engineering projects in public. Few engineers work across both spatial systems and machine learning. I'm building at that intersection.
+        I've spent 8+ years designing and delivering production geospatial systems, from cloud data pipelines to the web apps people use every day. At Airspace Link I build airspace analysis tools for drone operators and government clients, and I bring AI and machine learning into the job, from LLM APIs to deep learning on imagery.
       </p>
       <div class="hero-actions animate delay-3">
         <a href="#projects" class="btn btn-primary">
@@ -415,7 +465,7 @@
           Resume (PDF)
         </a>
       </div>
-      <div class="animate delay-4" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px;">
+      <div class="hero-quicklinks animate delay-4" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px;">
         <a href="#projects" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Projects</a>
         <a href="#skills" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Skills</a>
         <a href="#experience" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Experience</a>
@@ -430,15 +480,15 @@
       <div class="hero-stats animate delay-4">
         <div>
           <div class="hero-stat-value">8+</div>
-          <div class="hero-stat-label">Years GIS</div>
+          <div class="hero-stat-label">Years in production GIS</div>
         </div>
         <div>
-          <div class="hero-stat-value">M.S.</div>
-          <div class="hero-stat-label">Environmental Studies</div>
+          <div class="hero-stat-value">50+</div>
+          <div class="hero-stat-label">Federal datasets maintained</div>
         </div>
         <div>
-          <div class="hero-stat-value">B.S.</div>
-          <div class="hero-stat-label">Earth Sciences</div>
+          <div class="hero-stat-value">100+</div>
+          <div class="hero-stat-label">City staff trained</div>
         </div>
       </div>
     </div>
@@ -448,7 +498,7 @@
 <!-- Social Proof -->
 <section class="section" id="social-proof" style="padding-top: 32px;">
   <div class="container">
-    <div class="section-label">Social Proof</div>
+    <div class="section-label">Testimonials</div>
     <h2 class="section-title">What people I've worked with say</h2>
 
     <!-- Testimonials -->
@@ -505,7 +555,7 @@
   <div class="container">
     <div class="section-label">Featured Projects</div>
     <h2 class="section-title">Built and shipped</h2>
-    <p class="section-desc">AI and data engineering projects, web applications, ESRI solutions, and cartography. Featured projects include expandable case studies.</p>
+    <p class="section-desc">Production work for Airspace Link and the City of Rochester, NH, plus AI and data engineering projects of my own. Featured projects open into case studies.</p>
 
     <!-- Filter tabs -->
     <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; margin-bottom: 24px;" id="project-filters">
@@ -517,7 +567,7 @@
       <button class="skill-cat" onclick="filterProjects('papers', this)">Papers</button>
     </div>
 
-    <div class="project-grid" id="project-grid">
+    <div class="project-grid collapsed" id="project-grid">
 
       <!-- 1. Cesium Drone Simulator — Airspace Link, shipped -->
       <div class="project-card featured" data-category="webapp">
@@ -1001,6 +1051,7 @@
       </div>
 
     </div>
+    <button type="button" class="projects-more" onclick="showAllProjects()"><span class="projects-more-label">Show all projects</span> <span aria-hidden="true">&darr;</span></button>
 
   </div>
 </section>
@@ -1008,8 +1059,8 @@
 <!-- Positioning -->
 <section class="section" id="positioning">
   <div class="container" style="max-width: 900px;">
-    <div class="section-label">Why This Matters</div>
-    <h2 class="section-title">Geospatial + AI is the next frontier</h2>
+    <div class="section-label">Why Geo + AI</div>
+    <h2 class="section-title">Geospatial engineering first, AI where it helps</h2>
 
     <div style="display: flex; gap: 48px; align-items: center; margin-top: 32px; flex-wrap: wrap;">
 
@@ -1022,13 +1073,13 @@
           <div style="position: absolute; right: 0; top: 0; width: 180px; height: 180px; border-radius: 50%; border: 2px solid #818cf8; background: rgba(129,140,248,0.06);"></div>
           <!-- Intersection label -->
           <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2;">
-            <div style="font-family: var(--mono); font-size: 15px; font-weight: 700; background: linear-gradient(135deg, var(--accent), #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">GeoAI</div>
+            <div style="font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--text-1);">GeoAI</div>
           </div>
         </div>
         <!-- Labels below the diagram -->
         <div style="display: flex; justify-content: space-between; margin-top: 12px; padding: 0 10px;">
           <span style="font-family: var(--mono); font-size: 11px; color: var(--accent); font-weight: 600; letter-spacing: 0.04em;">GEOSPATIAL</span>
-          <span style="font-family: var(--mono); font-size: 9px; color: var(--text-3); align-self: center;">RARE &middot; HIGH VALUE</span>
+          <span style="font-family: var(--mono); font-size: 9px; color: var(--text-3); align-self: center;">WHERE I WORK</span>
           <span style="font-family: var(--mono); font-size: 11px; color: #818cf8; font-weight: 600; letter-spacing: 0.04em;">AI / ML</span>
         </div>
       </div>
@@ -1036,13 +1087,13 @@
       <!-- Text -->
       <div style="flex: 1; min-width: 280px; font-size: 15px; color: var(--text-2); line-height: 1.8; display: flex; flex-direction: column; gap: 16px;">
         <p>
-          Spatial data is exploding. Satellites, drones, IoT sensors, and mobility platforms generate terabytes of geospatial data daily, but most AI teams lack the domain knowledge to work with it, and most GIS professionals lack the engineering depth to build ML systems.
+          Most hard spatial problems are data and delivery problems: messy sources, mismatched coordinate systems, data at scale, and people who need a clear answer. I've spent <strong style="color: var(--text-1);">8+ years</strong> on those problems, building pipelines, analysis, and apps that hold up in production.
         </p>
         <p>
-          The real-world applications are massive: autonomous mobility, climate modeling, infrastructure monitoring, precision agriculture, and disaster response all depend on the intersection of spatial reasoning and machine learning.
+          AI and machine learning are part of that toolkit now. I use LLMs every day to design, write, and test software, through Claude Code and the Claude and OpenAI APIs. I've worked with ESRI's deep learning packages and image segmentation, and I build <strong style="color: var(--text-1);">data and ML projects in public</strong> to try new methods before they reach client work.
         </p>
         <p>
-          I've spent <strong style="color: var(--text-1);">8+ years</strong> in professional GIS building enterprise systems, automating spatial workflows, and shipping production applications. Now I'm building toward AI/ML engineering through <strong style="color: var(--text-1);">projects built in public</strong> covering deep learning, data pipelines, RAG, and MLOps.
+          I deliver the whole path: working through use cases with clients, technical proposals and RFP responses, the build, CI/CD from Dev to Prod, and training the people who use it. At Airspace Link that has meant airspace tools on AirHub Marketplace and a platform on Azure running 50+ federal datasets. At the City of Rochester, NH, it was a work order system that 100+ staff were trained to run.
         </p>
       </div>
 
@@ -1206,7 +1257,7 @@
         <div class="timeline-company">Airspace Link</div>
         <div class="timeline-date">2022 — Present</div>
         <div class="timeline-desc">
-          Building geospatial data pipelines and rapid prototypes for the UAS (drone) air mobility space. Full-stack geospatial work spanning ArcGIS Enterprise, Python automation, Azure cloud, CI/CD with GitHub Actions, and real-time spatial analysis for municipal and aviation clients.
+          Full-stack engineer on a cloud geospatial platform for drone operators and municipal, enterprise, and federal clients. Led 3D airspace analysis for military air bases and airports and shipped the obstruction calculator to AirHub Marketplace. Contributed to AirHub Portal from early development through production release, supported technical proposals and RFP responses, and maintain CI/CD across Dev, Stage, and Prod on Azure.
         </div>
       </div>
 
@@ -1215,7 +1266,7 @@
         <div class="timeline-company">City of Rochester, NH</div>
         <div class="timeline-date">2021 — 2022</div>
         <div class="timeline-desc">
-          Surveyed, mapped, and managed public infrastructure assets using GPS, CAD, and enterprise geodatabases. Built web apps for work orders, vehicle tracking, and field data collection that are still in use by city staff.
+          Technical lead for the city's GIS. Built a full work order system, from public service requests to crew dispatch and status dashboards, and trained 100+ staff to run it. Added fleet tracking from live vehicle sensors and co-managed an enterprise geodatabase of 100+ feature classes. The apps are still in use by city staff.
         </div>
       </div>
 
@@ -1224,7 +1275,7 @@
         <div class="timeline-company">Granite State Rural Water Association</div>
         <div class="timeline-date">2020 — 2021</div>
         <div class="timeline-desc">
-          Coordinated source water protection programs for rural communities. Created hydrology and groundwater map series for watershed management plans. Trained community staff on GIS tools.
+          Customer-facing GIS consultant to 270 member water systems across New Hampshire, delivering source water protection plans that non-technical staff could carry out themselves, plus hydrology and soils analysis for the Whitewater Watershed Management Plan.
         </div>
       </div>
 
@@ -1233,7 +1284,7 @@
         <div class="timeline-company">Antioch University New England</div>
         <div class="timeline-date">2018 — 2020</div>
         <div class="timeline-desc">
-          Taught Intro and Advanced GIS courses. Conducted spatial analysis research through the Antioch Spatial Analysis Lab. Built conservation mapping tools for wildlife tracking and natural resource inventories.
+          Taught Intro and Advanced GIS to master's students. Automated ecological co-occurrence models in Python for natural resource inventories in Bow and Chichester, NH, and built a field app for tracking wood turtle populations.
         </div>
       </div>
     </div>
@@ -1270,7 +1321,7 @@
   <div class="container">
     <div class="section-label">Contact</div>
     <h2 class="section-title">Let's connect</h2>
-    <p class="section-desc">I'm always interested in connecting with others working at the intersection of geospatial technology and AI. Feel free to reach out.</p>
+    <p class="section-desc">If you're working on a spatial problem, building a geospatial team, or bringing AI into GIS work, I'd be glad to hear from you.</p>
 
     <div class="contact-grid">
       <a href="mailto:everythingspatialgis@gmail.com" class="contact-card">
@@ -1301,8 +1352,16 @@
 
 <!-- Project filter -->
 <script>
+function showAllProjects() {
+  document.getElementById('project-grid').classList.remove('collapsed');
+}
+(function () {
+  var n = document.querySelectorAll('#project-grid > .project-card').length, l = document.querySelector('.projects-more-label');
+  if (l && n) l.textContent = 'Show all ' + n + ' projects';
+})();
 function filterProjects(category, btn) {
-  const cards = document.querySelectorAll('.project-card');
+  const cards = document.querySelectorAll('#project-grid .project-card');
+  if (category !== 'all') showAllProjects();
   cards.forEach(card => {
     if (category === 'all' || card.dataset.category === category) {
       card.style.display = '';
