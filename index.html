@@ -36,7 +36,7 @@
 
     /* ─── Company Logos ─── */
     #company-logos {
-      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;
+      display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px;
       margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
     }
     .company {
@@ -59,6 +59,7 @@
     .company-role .mono { font-size: 11px; color: var(--text-2); }
     @media (max-width: 768px) {
       #company-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; padding-top: 28px; }
+      .company:last-child:nth-child(odd) { grid-column: 1 / -1; }
       .company { padding: 14px 8px; gap: 12px; }
       .company-logo-wrap { height: 52px; }
       .company-logo { max-height: 52px; max-width: 140px; }
@@ -655,6 +656,10 @@
       <a class="company" href="#experience">
         <span class="company-logo-wrap"><img src="assets/images/GraniteStateRuralWaterAssociation_Logo-removebg-preview.png" alt="Granite State Rural Water Association" class="company-logo" loading="lazy"></span>
         <span><span class="company-name">Granite State Rural Water Association</span><span class="company-role">GIS / Source Water Specialist<br><span class="mono">2020 – 2021</span></span></span>
+      </a>
+      <a class="company" href="#experience">
+        <span class="company-logo-wrap"><img src="assets/images/NHDES_Logo.png" alt="New Hampshire Geological Survey, NHDES" class="company-logo" loading="lazy"></span>
+        <span><span class="company-name">NH Geological Survey</span><span class="company-role">Stream Crossing Assessor<br><span class="mono">2019</span></span></span>
       </a>
       <a class="company" href="#experience">
         <span class="company-logo-wrap"><img src="assets/images/ASAL_Logo-removebg-preview.png" alt="Antioch University New England" class="company-logo" loading="lazy"></span>
