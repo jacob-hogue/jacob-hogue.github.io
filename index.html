@@ -1119,6 +1119,72 @@
         <div class="project-card-origin">Personal</div>
       </div>
 
+      <!-- Drone Threat Index — Airspace Link (no public link) -->
+      <div class="project-card" data-category="webapp">
+        <div class="project-card-header">
+          <div class="project-card-title">Drone Threat Index</div>
+          <span class="project-card-type">Web App</span>
+        </div>
+        <div class="project-card-desc">Route-aware risk analysis app on AirHub Marketplace. It scores a planned drone route against multiple infrastructure datasets so operators can see where a flight crosses higher-risk ground before they fly.</div>
+        <div class="project-card-tech"><span>ArcGIS Maps SDK for JavaScript</span><span>Valhalla</span><span>Tailwind CSS</span><span>Playwright</span><span>GitHub Actions</span></div>
+        <button class="case-study-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '- Hide details' : '+ View case study';">+ View case study</button>
+        <div class="case-study-detail">
+          <dl>
+            <dt>Problem</dt>
+            <dd>Operators planning flights in complex airspace had no single view of ground risk along a route. The relevant infrastructure data lived in separate datasets, and reading them together by hand did not scale.</dd>
+            <dt>Approach</dt>
+            <dd>Started with white-paper research into existing threat-index methods, then a Leaflet prototype to settle the scoring and the interface. Rebuilt the production version on the ArcGIS Maps SDK for JavaScript, with Valhalla tracing live routes from stations to nearby spatial cells. Shipped in small releases from local through dev, staging and production.</dd>
+            <dt>Outcome</dt>
+            <dd>A production app on AirHub Marketplace that operators use for flight planning in complex airspace, built from research to release in one iterative loop.</dd>
+          </dl>
+        </div>
+        <div class="project-card-origin">Airspace Link</div>
+      </div>
+
+      <!-- Detroit AAIR response dashboards — Airspace Link (no public link) -->
+      <div class="project-card" data-category="esri">
+        <div class="project-card-header">
+          <div class="project-card-title">Detroit AAIR Drone Response Dashboards</div>
+          <span class="project-card-type">Case Study</span>
+        </div>
+        <div class="project-card-desc">One Experience Builder app for the Detroit Advanced Aerial Innovation Region that compares simulated drone-as-first-responder routes against ground response for fire, police and EMS incidents, refreshed daily from the city's incident feeds.</div>
+        <div class="project-card-tech"><span>Experience Builder</span><span>ArcGIS API for Python</span><span>Operations Dashboards</span><span>routingpy</span><span>3D Scenes</span></div>
+        <button class="case-study-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '- Hide details' : '+ View case study';">+ View case study</button>
+        <div class="case-study-detail">
+          <dl>
+            <dt>Problem</dt>
+            <dd>Program stakeholders needed one place to weigh several drone use cases, with the city's locations and demographics alongside them, instead of a separate study for each.</dd>
+            <dt>Approach</dt>
+            <dd>Scheduled ArcGIS API for Python notebooks check the public 911, fire and EMS feature services and append new incidents daily. For each incident the pipeline builds a simulated drone route from the nearest station that steers around FAA obstacles and airspace restrictions, and a ground route on the road network with routingpy, then compares response time and distance by station in three Operations Dashboards. The same app holds drone park siting, infrastructure inspection priorities, a 3D scene over Michigan Central, and a demographics web map.</dd>
+            <dt>Outcome</dt>
+            <dd>Quantified the time and distance difference between drone and ground response across the three incident types, kept current without manual work, and presented to Detroit fire and police department leadership.</dd>
+          </dl>
+        </div>
+        <div class="project-card-origin">Airspace Link</div>
+      </div>
+
+      <!-- Statewide stream crossing assessment — NH Geological Survey -->
+      <div class="project-card" data-category="esri">
+        <div class="project-card-header">
+          <div class="project-card-title">Statewide Stream Crossing Assessment</div>
+          <span class="project-card-type">Field GIS</span>
+        </div>
+        <div class="project-card-desc">Assessed about 450 culvert and bridge crossings across New Hampshire for a FEMA-funded hazard mitigation program, scoring each with geomorphic compatibility indices that feed hydraulic models and culvert replacement priorities. Processed SSURGO soils and LiDAR DEMs with ArcHydro for watershed delineation, ran QA/QC in the Statewide Asset Data Exchange System, and trained Regional Planning Commission staff on the assessment protocol.</div>
+        <div class="project-card-tech"><span>ArcHydro</span><span>LiDAR DEM</span><span>SSURGO</span><span>SADES</span><span>Field Survey</span></div>
+        <div class="project-card-origin">NH Geological Survey</div>
+      </div>
+
+      <!-- Wood turtle field data collection — Antioch -->
+      <div class="project-card" data-category="esri">
+        <div class="project-card-header">
+          <div class="project-card-title">Wood Turtle Field Data Collection</div>
+          <span class="project-card-type">Field App</span>
+        </div>
+        <div class="project-card-desc">ArcGIS Collector app for the American Turtle Observatory, built so field crews could record species abundance and habitat characteristics at each site for wood turtle population tracking.</div>
+        <div class="project-card-tech"><span>ArcGIS Collector</span><span>ArcGIS Online</span><span>Field Data Design</span></div>
+        <div class="project-card-origin">Antioch University</div>
+      </div>
+
       <!-- 16. Bow NH NRI — Academic -->
       <div class="project-card" data-category="maps">
         <div class="project-card-header">
@@ -1248,7 +1314,7 @@
 <section class="section" id="skills">
   <div class="container">
     <h2 class="section-title">What I work with</h2>
-    <p class="section-desc">74 tools, grouped by what they are for. The pill style shows how deep I go with each one.</p>
+    <p class="section-desc">77 tools, grouped by what they are for. The pill style shows how deep I go with each one.</p>
     <div class="skills-legend" aria-label="Legend">
       <span><span class="pill expert">Expert</span> daily use, deep knowledge</span>
       <span><span class="pill">Proficient</span> project experience</span>
@@ -1262,7 +1328,7 @@
       <div class="skills-cat">Geospatial &amp; mapping</div>
       <div class="skills-pills"><span class="pill proficient">PostGIS</span><span class="pill proficient">GeoPandas</span><span class="pill proficient">Rasterio</span><span class="pill proficient">Leaflet</span><span class="pill proficient">Cesium.js</span><span class="pill proficient">ArcGIS JS SDK</span><span class="pill proficient">QGIS</span><span class="pill proficient">GDAL</span><span class="pill proficient">H3</span><span class="pill proficient">A5</span><span class="pill proficient">LiDAR</span><span class="pill proficient">ArcHydro</span><span class="pill proficient">Remote Sensing</span><span class="pill proficient">GeoJSON</span><span class="pill proficient">GeoParquet</span><span class="pill proficient">STAC</span><span class="pill familiar">Deck.gl</span><span class="pill familiar">Mapbox</span><span class="pill familiar">Google Earth Engine</span><span class="pill familiar">ENVI</span></div>
       <div class="skills-cat">Cloud, DevOps &amp; data</div>
-      <div class="skills-pills"><span class="pill proficient">Azure</span><span class="pill proficient">Firebase</span><span class="pill proficient">Docker</span><span class="pill proficient">GitHub Actions</span><span class="pill proficient">PostgreSQL</span><span class="pill proficient">Supabase</span><span class="pill proficient">DuckDB</span><span class="pill proficient">dbt</span><span class="pill proficient">Webhooks</span><span class="pill proficient">Valhalla</span><span class="pill proficient">Flask</span><span class="pill proficient">React</span><span class="pill proficient">Power Automate</span></div>
+      <div class="skills-pills"><span class="pill proficient">Azure</span><span class="pill proficient">Firebase</span><span class="pill proficient">Docker</span><span class="pill proficient">GitHub Actions</span><span class="pill proficient">PostgreSQL</span><span class="pill proficient">Supabase</span><span class="pill proficient">DuckDB</span><span class="pill proficient">dbt</span><span class="pill proficient">Webhooks</span><span class="pill proficient">Valhalla</span><span class="pill proficient">Flask</span><span class="pill proficient">React</span><span class="pill proficient">Power Automate</span><span class="pill proficient">Vercel</span><span class="pill proficient">Render</span><span class="pill proficient">Cloudflare</span></div>
       <div class="skills-cat">AI / ML</div>
       <div class="skills-pills"><span class="pill proficient">NumPy</span><span class="pill proficient">Pandas</span><span class="pill proficient">scikit-learn</span><span class="pill proficient">Matplotlib</span><span class="pill proficient">SciPy</span><span class="pill familiar">PyTorch</span><span class="pill familiar">HuggingFace</span></div>
       <div class="skills-cat">AI coding agents &amp; product analytics</div>
