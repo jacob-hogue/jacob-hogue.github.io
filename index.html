@@ -15,6 +15,7 @@
   <meta name="twitter:description" content="Senior geospatial engineer with 8+ years delivering production GIS, from cloud data pipelines to web apps, with AI and machine learning built into the work.">
   <meta name="twitter:image" content="https://jacob-hogue.github.io/assets/images/Me.jpg">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230f1117'/%3E%3Ctext x='32' y='42' font-family='system-ui,-apple-system,sans-serif' font-size='28' font-weight='700' fill='%2338bdf8' text-anchor='middle'%3EJH%3C/text%3E%3C/svg%3E">
+  <link rel="preload" as="image" href="assets/images/Me.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,6 +30,9 @@
       -webkit-font-smoothing: antialiased;
     }
     a { text-decoration: none; color: inherit; }
+    ::selection { background: rgba(56,189,248,0.35); color: #fff; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    html { scrollbar-color: #2a2f3d var(--surface); }
 
     /* ─── Company Logos ─── */
     .company-logo { height: 44px; filter: grayscale(1) opacity(0.6); transition: filter 0.3s; }
@@ -153,9 +157,9 @@
     /* ─── Hero ─── */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
-      padding-top: 80px;
+      padding: 112px 0 48px;
     }
-    .hero-content { max-width: 640px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 56px; align-items: start; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--mono); font-size: 12px; color: var(--accent);
@@ -165,12 +169,29 @@
     .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .hero h1 {
-      font-size: clamp(36px, 4.5vw, 52px); font-weight: 700;
-      color: var(--text-1); letter-spacing: -0.03em; line-height: 1.1;
-      margin-bottom: 20px;
+      font-size: clamp(38px, 5vw, 58px); font-weight: 700;
+      color: var(--text-1); letter-spacing: -0.035em; line-height: 1.04;
+      margin-bottom: 20px; text-wrap: balance;
     }
-    .hero p { font-size: 17px; color: var(--text-2); line-height: 1.7; margin-bottom: 32px; max-width: 520px; }
+    .hero-lede { font-size: 17px; color: var(--text-2); line-height: 1.65; margin-bottom: 28px; max-width: 54ch; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Proof: three results with their context, read as sentences, not a stat strip */
+    .hero-proof {
+      list-style: none; margin-top: 36px; padding-top: 24px;
+      border-top: 1px solid var(--border); display: grid; gap: 12px; max-width: 60ch;
+    }
+    .hero-proof li {
+      display: grid; grid-template-columns: 16px 1fr; gap: 12px;
+      font-size: 14.5px; line-height: 1.55; color: var(--text-2);
+    }
+    .hero-proof li::before {
+      content: ''; width: 16px; height: 16px; margin-top: 3px; border-radius: 50%;
+      border: 1px solid rgba(56,189,248,0.4);
+      background: radial-gradient(circle, var(--accent) 0 2.5px, transparent 3px);
+    }
+    .hero-proof strong { color: var(--text-1); font-weight: 600; }
+
     .hero-stats {
       display: flex; gap: 40px; margin-top: 48px; padding-top: 32px;
       border-top: 1px solid var(--border);
@@ -178,24 +199,45 @@
     .hero-stat-value { font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--text-1); }
     .hero-stat-label { font-size: 12px; color: var(--text-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-    /* ─── D3 Globe ─── */
-    #globe-container {
-      width: 220px; height: 220px; margin: 0 auto;
-      filter: drop-shadow(0 0 20px rgba(56,189,248,0.2));
+    /* ─── Portrait: photo with an offset frame, the globe docked at its corner ─── */
+    .portrait { position: relative; width: 300px; margin-left: auto; padding-top: 8px; }
+    .portrait-frame { position: relative; width: 260px; aspect-ratio: 4 / 5; border-radius: 20px; }
+    .portrait-frame::before {
+      content: ''; position: absolute; inset: 0; border-radius: 20px;
+      border: 1px solid rgba(56,189,248,0.45); transform: translate(16px, 16px);
     }
-    #globe-container svg { width: 100%; height: 100%; }
-    #globe-container .sphere { fill: rgba(15,17,23,0.6); stroke: rgba(56,189,248,0.5); stroke-width: 1; }
-    #globe-container .graticule { fill: none; stroke: rgba(56,189,248,0.18); stroke-width: 0.4; }
-    #globe-container .land { fill: rgba(56,189,248,0.12); stroke: rgba(56,189,248,0.55); stroke-width: 0.5; }
-    #globe-container .location-dot {
-      fill: #34d399; stroke: rgba(52,211,153,0.5); stroke-width: 4;
-      filter: drop-shadow(0 0 4px rgba(52,211,153,0.8));
+    .portrait-frame img {
+      position: relative; display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: top; border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 28px 56px -20px rgba(0,0,0,0.75), 0 12px 28px -14px rgba(56,189,248,0.3);
     }
+    .portrait-globe {
+      position: absolute; left: -40px; bottom: -4px; width: 160px; height: 160px;
+      padding: 8px; border-radius: 50%; background: var(--surface);
+      box-shadow: 0 18px 36px -14px rgba(0,0,0,0.75);
+    }
+    .portrait-caption {
+      margin-top: 32px; font-family: var(--mono); font-size: 12px;
+      line-height: 1.6; color: var(--text-2); letter-spacing: 0.02em;
+    }
+    .portrait-caption b { font-weight: 500; color: var(--text-1); }
+
+    /* ─── D3 Globe (inside the portrait) ─── */
+    #globe-container svg { display: block; width: 100%; height: 100%; }
+    #globe-container .sphere { fill: #0c0e14; stroke: rgba(56,189,248,0.6); stroke-width: 1; }
+    #globe-container .graticule { fill: none; stroke: rgba(56,189,248,0.2); stroke-width: 0.5; }
+    #globe-container .land { fill: rgba(56,189,248,0.16); stroke: rgba(56,189,248,0.7); stroke-width: 0.6; }
+    #globe-container .location-dot { fill: var(--green); stroke: rgba(52,211,153,0.5); stroke-width: 4; }
     @keyframes locationPulse {
       0%, 100% { stroke-opacity: 0.3; stroke-width: 3; }
       50% { stroke-opacity: 0.7; stroke-width: 6; }
     }
     #globe-container .location-dot { animation: locationPulse 2s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      #globe-container .location-dot, .hero-badge .dot { animation: none; }
+      .animate { animation: none; opacity: 1; }
+    }
 
     /* ─── Projects ─── */
     .project-grid {
@@ -378,22 +420,34 @@
     .mobile-menu a:hover { color: var(--text-1); }
 
     /* ─── Responsive ─── */
+    @media (max-width: 960px) {
+      .hero { min-height: 0; align-items: start; padding-top: 104px; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr) 264px; gap: 40px; }
+      .portrait { width: 264px; }
+      .portrait-frame { width: 224px; }
+      .portrait-globe { width: 132px; height: 132px; left: -30px; }
+    }
     @media (max-width: 768px) {
-      .hero-content { flex-direction: column !important; gap: 24px !important; }
-      .hero-content > div:first-child { min-width: 0 !important; }
-      .hero { min-height: 0; padding-top: 84px; padding-bottom: 8px; }
-      .hero-content > div:last-child { align-self: flex-start; order: -1; }
-      .hero-content img { width: 104px !important; height: 128px !important; border-radius: 14px !important; }
-      #globe-container { display: none; }
-      .hero h1 { font-size: 30px !important; margin-bottom: 16px; }
-      .hero h1 br { display: none; }
-      .hero p { font-size: 16px; margin-bottom: 24px; }
+      .hero { min-height: 0; padding: 92px 0 8px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+      .portrait {
+        order: -1; width: 100%; padding: 0; margin: 0;
+        display: grid; grid-template-columns: 108px 1fr; gap: 18px; align-items: center;
+      }
+      .portrait-frame { width: 108px; border-radius: 14px; }
+      .portrait-frame::before { border-radius: 14px; transform: translate(8px, 8px); }
+      .portrait-frame img { border-radius: 14px; }
+      .portrait-globe { display: none; }
+      .portrait-caption { margin-top: 0; }
+      .hero h1 { font-size: 32px; margin-bottom: 16px; }
+      .hero-lede { font-size: 16px; margin-bottom: 24px; }
       .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .hero-actions .btn { width: 100%; justify-content: center; padding: 12px 10px; font-size: 14px; }
       .hero-actions .btn-primary { grid-column: 1 / -1; }
       .hero-blog-row { margin-top: 10px; }
       .hero-blog-row .btn-blog { width: 100%; justify-content: center; padding: 12px 10px; font-size: 14px; }
-      .hero-quicklinks { display: none !important; }
+      .hero-proof { margin-top: 28px; padding-top: 20px; gap: 10px; }
+      .hero-proof li { font-size: 14px; }
       .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; padding-top: 24px; }
       .hero-stat-value { font-size: 22px; }
       .hero-stat-label { font-size: 10.5px; line-height: 1.4; }
@@ -453,14 +507,12 @@
 <!-- Hero -->
 <section class="hero" id="about">
   <div class="container">
-    <div class="hero-content" style="display: flex; gap: 48px; align-items: flex-start; max-width: 100%; flex-wrap: wrap;">
-      <div style="flex: 1; min-width: 320px;">
+    <div class="hero-grid">
+      <div class="hero-copy">
       <div class="hero-badge animate"><span class="dot"></span> Currently at Airspace Link</div>
-      <h1 class="animate delay-1">
-        Senior geospatial engineer <br>building with AI
-      </h1>
-      <p class="animate delay-2">
-        I've spent 8+ years designing and delivering production geospatial systems, from cloud data pipelines to the web apps people use every day. At Airspace Link I build airspace analysis tools for drone operators and government clients, and I bring AI and machine learning into the job, from LLM APIs to deep learning on imagery.
+      <h1 class="animate delay-1">Senior geospatial engineer building with AI</h1>
+      <p class="hero-lede animate delay-2">
+        8+ years delivering production geospatial systems, from cloud data pipelines to the web apps people use every day. At Airspace Link I build airspace analysis tools for drone operators and government clients, with AI and machine learning built into the work.
       </p>
       <div class="hero-actions animate delay-3">
         <a href="#projects" class="btn btn-primary">
@@ -476,16 +528,18 @@
       <div class="hero-blog-row animate delay-3">
         <a href="https://jacob-hogue.github.io/the-shape-files/" target="_blank" rel="noopener" class="btn btn-blog"><svg class="blog-mark" viewBox="0 0 64 64" width="18" height="18" aria-hidden="true" focusable="false"><polyline points="5,42 32,57.5 59,42" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><polyline points="5,32 32,47.5 59,32" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g class="blog-mark-slab"><polygon points="32,6.5 51.5,17.8 51.5,26.2 32,37.5 5,22" fill="#ffffff" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/><polygon points="51.5,17.8 44.2,22 51.5,26.2" fill="#f6a8d2" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/></g></svg><span>Read my blog: The Shape-Files</span><span aria-hidden="true">&nearr;</span></a>
       </div>
-      <div class="hero-quicklinks animate delay-4" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px;">
-        <a href="#projects" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Projects</a>
-        <a href="#skills" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Skills</a>
-        <a href="#experience" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Experience</a>
-        <a href="#positioning" class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">Why Geo+AI</a>
+      <ul class="hero-proof animate delay-4">
+        <li><span><strong>Go/no-go decisions 75% faster</strong> for 50 senior military staff checking drone flights near air bases, with an obstruction calculator I built on AirHub Marketplace</span></li>
+        <li><span><strong>13.92 square miles of new drone airspace</strong> for Romulus, MI, after a risk assessment I led raised 34 FAA ceiling grids</span></li>
+        <li><span><strong>9,242 government ArcGIS servers</strong> from 5,459 organizations indexed in Datum, a public directory I built and keep current with weekly checks</span></li>
+      </ul>
       </div>
-      </div>
-      <div class="animate delay-2" style="flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        <img src="assets/images/Me.jpg" alt="Jacob Hogue" style="width: 200px; height: 250px; border-radius: 16px; object-fit: cover; object-position: top; border: 2px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
-        <div id="globe-container" aria-hidden="true"></div>
+      <div class="portrait animate delay-2">
+        <div class="portrait-frame">
+          <img src="assets/images/Me.jpg" alt="Jacob Hogue" width="562" height="717" fetchpriority="high">
+          <div id="globe-container" class="portrait-globe" aria-hidden="true"></div>
+        </div>
+        <p class="portrait-caption"><b>Massachusetts</b> · remote US<br>Projects from New Hampshire to Dubai</p>
       </div>
     </div>
       <div class="hero-stats animate delay-4">
@@ -509,7 +563,6 @@
 <!-- Social Proof -->
 <section class="section" id="social-proof" style="padding-top: 32px;">
   <div class="container">
-    <div class="section-label">Testimonials</div>
     <h2 class="section-title">What people I've worked with say</h2>
 
     <!-- Testimonials -->
@@ -575,7 +628,6 @@
 <!-- Projects -->
 <section class="section" id="projects">
   <div class="container">
-    <div class="section-label">Featured Projects</div>
     <h2 class="section-title">Built and shipped</h2>
     <p class="section-desc">Production work for Airspace Link and the City of Rochester, NH, plus AI and data engineering projects of my own. Featured projects open into case studies.</p>
 
@@ -1081,7 +1133,6 @@
 <!-- Positioning -->
 <section class="section" id="positioning">
   <div class="container" style="max-width: 900px;">
-    <div class="section-label">Why Geo + AI</div>
     <h2 class="section-title">Geospatial engineering first, AI where it helps</h2>
 
     <div style="display: flex; gap: 48px; align-items: center; margin-top: 32px; flex-wrap: wrap;">
@@ -1126,7 +1177,6 @@
 <!-- Skills -->
 <section class="section" id="skills">
   <div class="container">
-    <div class="section-label">Technical Skills</div>
     <h2 class="section-title">What I work with</h2>
 
     <!-- Skills by proficiency tier -->
@@ -1270,7 +1320,6 @@
 <!-- Experience -->
 <section class="section" id="experience">
   <div class="container">
-    <div class="section-label">Experience</div>
     <h2 class="section-title">Where I've worked</h2>
 
     <div class="timeline">
@@ -1318,7 +1367,6 @@
   <!-- Education -->
   <section class="section">
     <div class="container">
-      <div class="section-label">Education</div>
       <h2 class="section-title">Academic background</h2>
 
       <div class="contact-grid" style="margin-top: 32px;">
@@ -1341,7 +1389,6 @@
 <!-- Contact -->
 <section class="section" id="contact">
   <div class="container">
-    <div class="section-label">Contact</div>
     <h2 class="section-title">Let's connect</h2>
     <p class="section-desc">If you're working on a spatial problem, building a geospatial team, or bringing AI into GIS work, I'd be glad to hear from you.</p>
 
@@ -1396,28 +1443,40 @@ function filterProjects(category, btn) {
 }
 </script>
 
-<!-- D3 Globe -->
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-geo@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<!-- D3 Globe: d3-geo only (about 55 KB with d3-array and topojson-client, down from 330 KB with the full d3 bundle). Deferred, pinned, paused when off screen. -->
+<script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js" integrity="sha384-VpKMdU+TlpggHFip46tJ/xkFUs8NFBwLqUMo3+3uiu411lU6eUQYsHVU+JFpA5ja" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js" integrity="sha384-VNiKRUXp0MmglFfqDwkfuk+Y78C3WTJShdKSaFwOacLR3UmamxHIJLBTD3BadIXD" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous" defer></script>
 <script>
-(function() {
-  const container = document.getElementById('globe-container');
-  if (!container) return;
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.getElementById('globe-container');
+  if (!container || !window.d3 || !window.topojson) return;
 
-  const width = 220, height = 220;
-  const svg = d3.select(container).append('svg')
-    .attr('viewBox', `0 0 ${width} ${height}`);
+  var size = 160;
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
+  container.appendChild(svg);
 
-  const projection = d3.geoOrthographic()
-    .scale(100)
-    .translate([width / 2, height / 2])
+  var projection = d3.geoOrthographic()
+    .scale(size / 2 - 2)
+    .translate([size / 2, size / 2])
     .clipAngle(90);
+  var path = d3.geoPath(projection);
 
-  const path = d3.geoPath(projection);
+  function addPath(cls) {
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('class', cls);
+    svg.appendChild(p);
+    return p;
+  }
+  var sphere = addPath('sphere');
+  var graticulePath = addPath('graticule');
+  var landPath = addPath('land');
+  var graticule = d3.geoGraticule10();
 
   // Locations of work
-  const locations = [
+  var locations = [
     { name: 'Rochester, NH', coords: [-70.9753, 43.3045] },
     { name: 'Keene, NH', coords: [-72.2779, 42.9336] },
     { name: 'Concord, NH', coords: [-71.5376, 43.2081] },
@@ -1430,60 +1489,61 @@ function filterProjects(category, btn) {
     { name: 'Dubai, UAE', coords: [55.2708, 25.2048] },
     { name: 'Japan', coords: [138.2529, 36.2048] }
   ];
-
-  // Sphere
-  svg.append('path')
-    .datum({ type: 'Sphere' })
-    .attr('class', 'sphere')
-    .attr('d', path);
-
-  // Graticule
-  const graticule = d3.geoGraticule10();
-  const graticulePath = svg.append('path')
-    .datum(graticule)
-    .attr('class', 'graticule')
-    .attr('d', path);
-
-  // Load world topology
-  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json').then(world => {
-    const land = topojson.feature(world, world.objects.land);
-    const landPath = svg.append('path')
-      .datum(land)
-      .attr('class', 'land')
-      .attr('d', path);
-
-    // Location dots
-    const dots = svg.selectAll('.location-dot')
-      .data(locations)
-      .enter().append('circle')
-      .attr('class', 'location-dot')
-      .attr('r', 2.5);
-
-    // Animation loop
-    let rotation = [-75, -20, 0];
-    function rotate() {
-      rotation[0] = (rotation[0] + 0.15) % 360;
-      projection.rotate(rotation);
-      svg.select('.sphere').attr('d', path);
-      graticulePath.attr('d', path);
-      landPath.attr('d', path);
-      dots
-        .attr('cx', d => projection(d.coords)[0])
-        .attr('cy', d => projection(d.coords)[1])
-        .style('display', d => {
-          const coords = projection(d.coords);
-          if (!coords) return 'none';
-          // Hide dots on the back of the globe
-          const geoPath = d3.geoPath(projection);
-          const centroid = projection.invert([width / 2, height / 2]);
-          const distance = d3.geoDistance(d.coords, centroid);
-          return distance > Math.PI / 2 ? 'none' : 'block';
-        });
-      requestAnimationFrame(rotate);
-    }
-    rotate();
+  var dots = locations.map(function () {
+    var c = document.createElementNS(NS, 'circle');
+    c.setAttribute('class', 'location-dot');
+    c.setAttribute('r', '2.2');
+    svg.appendChild(c);
+    return c;
   });
-})();
+
+  var land = null;
+  var rotation = [-75, -20, 0];
+
+  function render() {
+    sphere.setAttribute('d', path({ type: 'Sphere' }));
+    graticulePath.setAttribute('d', path(graticule));
+    if (land) landPath.setAttribute('d', path(land));
+    var center = projection.invert([size / 2, size / 2]);
+    dots.forEach(function (c, i) {
+      var coords = locations[i].coords;
+      var p = projection(coords);
+      // Hide dots on the back of the globe
+      var hidden = !p || d3.geoDistance(coords, center) > Math.PI / 2;
+      c.style.display = hidden ? 'none' : '';
+      if (!hidden) { c.setAttribute('cx', p[0]); c.setAttribute('cy', p[1]); }
+    });
+  }
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var visible = false;
+  var frame = null;
+  function tick() {
+    rotation[0] = (rotation[0] + 0.12) % 360;
+    projection.rotate(rotation);
+    render();
+    frame = visible ? requestAnimationFrame(tick) : null;
+  }
+  function start() {
+    if (reduceMotion || frame) return;
+    frame = requestAnimationFrame(tick);
+  }
+
+  projection.rotate(rotation);
+  render();
+  new IntersectionObserver(function (entries) {
+    visible = entries[0].isIntersecting;
+    if (visible) start();
+  }).observe(container);
+
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/land-110m.json')
+    .then(function (r) { return r.json(); })
+    .then(function (world) {
+      land = topojson.feature(world, world.objects.land);
+      render();
+    })
+    .catch(function () {});
+});
 </script>
 
 <!-- Scroll animations -->
