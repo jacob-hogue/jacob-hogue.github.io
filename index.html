@@ -373,6 +373,31 @@
     #project-filters .skill-cat:focus-visible, .projects-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .projects-more { display: none; }
 
+    /* ─── Skills, condensed: one row per category, tier carried on the pill ─── */
+    .skills-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 20px; font-size: 12.5px; color: var(--text-2); }
+    .skills-legend span { display: inline-flex; align-items: center; gap: 8px; }
+    .skills-rows {
+      display: grid; grid-template-columns: 184px minmax(0, 1fr);
+      column-gap: 28px; row-gap: 22px; margin-top: 28px;
+      padding-top: 24px; border-top: 1px solid var(--border);
+    }
+    .skills-cat { font-size: 13.5px; font-weight: 600; color: var(--text-1); padding-top: 4px; line-height: 1.4; }
+    .skills-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      display: inline-flex; align-items: center; padding: 5px 11px; border-radius: 999px;
+      font-size: 12.5px; line-height: 1.3; white-space: nowrap; border: 1px solid var(--border-hover);
+      color: var(--text-2); background: rgba(255,255,255,0.03);
+    }
+    .pill.expert { color: var(--text-1); font-weight: 600; border-color: rgba(56,189,248,0.5); background: var(--accent-dim); }
+    .pill.familiar { border-style: dashed; background: transparent; }
+    @media (max-width: 768px) {
+      .skills-rows { grid-template-columns: 1fr; row-gap: 8px; }
+      .skills-cat { padding-top: 0; }
+      .skills-pills { margin-bottom: 14px; }
+      .skills-pills:last-child { margin-bottom: 0; }
+      .pill { font-size: 12px; padding: 5px 10px; }
+    }
+
     /* ─── Experience ─── */
     .timeline { margin-top: 40px; }
     .timeline-item {
@@ -1223,155 +1248,27 @@
 <section class="section" id="skills">
   <div class="container">
     <h2 class="section-title">What I work with</h2>
-
-    <!-- Skills by proficiency tier -->
-    <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 32px;">
-
-      <!-- Expert Tier -->
-      <div class="skill-group">
-        <span class="skill-tier-label tier-expert">Expert — Daily Use / Deep Knowledge</span>
-        <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 12px;">
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">ESRI Ecosystem</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">ArcGIS Pro</span></div>
-              <div class="skill-tag"><span class="name">ArcGIS Enterprise</span></div>
-              <div class="skill-tag"><span class="name">ArcGIS Online Admin</span></div>
-              <div class="skill-tag"><span class="name">ArcGIS Python API</span></div>
-              <div class="skill-tag"><span class="name">Experience Builder</span></div>
-              <div class="skill-tag"><span class="name">Dashboards</span></div>
-              <div class="skill-tag"><span class="name">Survey123</span></div>
-              <div class="skill-tag"><span class="name">Field Maps</span></div>
-              <div class="skill-tag"><span class="name">Spatial Analyst</span></div>
-              <div class="skill-tag"><span class="name">Network Analyst</span></div>
-              <div class="skill-tag"><span class="name">Story Maps</span></div>
-            </div>
-          </div>
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Languages & Core Tools</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">Python</span></div>
-              <div class="skill-tag"><span class="name">SQL</span></div>
-              <div class="skill-tag"><span class="name">JavaScript</span></div>
-              <div class="skill-tag"><span class="name">HTML / CSS</span></div>
-              <div class="skill-tag"><span class="name">Arcade</span></div>
-              <div class="skill-tag"><span class="name">Git</span></div>
-              <div class="skill-tag"><span class="name">REST APIs</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Proficient Tier -->
-      <div class="skill-group">
-        <span class="skill-tier-label tier-proficient">Proficient — Project Experience</span>
-        <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 12px;">
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Geospatial & Mapping</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">PostGIS</span></div>
-              <div class="skill-tag"><span class="name">GeoPandas</span></div>
-              <div class="skill-tag"><span class="name">Rasterio</span></div>
-              <div class="skill-tag"><span class="name">Leaflet</span></div>
-              <div class="skill-tag"><span class="name">Cesium.js</span></div>
-              <div class="skill-tag"><span class="name">ArcGIS JS SDK</span></div>
-              <div class="skill-tag"><span class="name">QGIS</span></div>
-              <div class="skill-tag"><span class="name">GDAL</span></div>
-              <div class="skill-tag"><span class="name">H3</span></div>
-              <div class="skill-tag"><span class="name">A5</span></div>
-              <div class="skill-tag"><span class="name">LiDAR</span></div>
-              <div class="skill-tag"><span class="name">ArcHydro</span></div>
-              <div class="skill-tag"><span class="name">Remote Sensing</span></div>
-              <div class="skill-tag"><span class="name">GeoJSON</span></div>
-              <div class="skill-tag"><span class="name">GeoParquet</span></div>
-              <div class="skill-tag"><span class="name">STAC</span></div>
-            </div>
-          </div>
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">ESRI Extended</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">REST Services</span></div>
-              <div class="skill-tag"><span class="name">3D Scenes</span></div>
-              <div class="skill-tag"><span class="name">Insights</span></div>
-              <div class="skill-tag"><span class="name">Business Analyst</span></div>
-              <div class="skill-tag"><span class="name">3D Analyst</span></div>
-              <div class="skill-tag"><span class="name">GeoEvent Server</span></div>
-            </div>
-          </div>
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Cloud, DevOps & Data</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">Azure</span></div>
-              <div class="skill-tag"><span class="name">Firebase</span></div>
-              <div class="skill-tag"><span class="name">Docker</span></div>
-              <div class="skill-tag"><span class="name">GitHub Actions</span></div>
-              <div class="skill-tag"><span class="name">PostgreSQL</span></div>
-              <div class="skill-tag"><span class="name">Supabase</span></div>
-              <div class="skill-tag"><span class="name">DuckDB</span></div>
-              <div class="skill-tag"><span class="name">dbt</span></div>
-              <div class="skill-tag"><span class="name">Webhooks</span></div>
-              <div class="skill-tag"><span class="name">Valhalla</span></div>
-              <div class="skill-tag"><span class="name">Flask</span></div>
-              <div class="skill-tag"><span class="name">React</span></div>
-              <div class="skill-tag"><span class="name">Power Automate</span></div>
-            </div>
-          </div>
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">AI / ML</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">NumPy</span></div>
-              <div class="skill-tag"><span class="name">Pandas</span></div>
-              <div class="skill-tag"><span class="name">scikit-learn</span></div>
-              <div class="skill-tag"><span class="name">Matplotlib</span></div>
-              <div class="skill-tag"><span class="name">SciPy</span></div>
-            </div>
-          </div>
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">AI Coding Agents & Product Analytics</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">Claude Code</span></div>
-              <div class="skill-tag"><span class="name">Codex</span></div>
-              <div class="skill-tag"><span class="name">Claude API</span></div>
-              <div class="skill-tag"><span class="name">OpenAI API</span></div>
-              <div class="skill-tag"><span class="name">MCP Servers</span></div>
-              <div class="skill-tag"><span class="name">PostHog</span></div>
-              <div class="skill-tag"><span class="name">Figma</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Familiar Tier -->
-      <div class="skill-group">
-        <span class="skill-tier-label tier-familiar">Familiar — Learning / Explored</span>
-        <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 12px;">
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">AI / ML (Building)</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">PyTorch</span></div>
-              <div class="skill-tag"><span class="name">HuggingFace</span></div>
-            </div>
-          </div>
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Geospatial Emerging</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">Deck.gl</span></div>
-              <div class="skill-tag"><span class="name">Mapbox</span></div>
-              <div class="skill-tag"><span class="name">Google Earth Engine</span></div>
-              <div class="skill-tag"><span class="name">ENVI</span></div>
-            </div>
-          </div>
-          <div>
-            <div style="font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Other</div>
-            <div class="skills-grid">
-              <div class="skill-tag"><span class="name">R</span></div>
-              <div class="skill-tag"><span class="name">Blender</span></div>
-              <div class="skill-tag"><span class="name">Power Apps</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <p class="section-desc">74 tools, grouped by what they are for. The pill style shows how deep I go with each one.</p>
+    <div class="skills-legend" aria-label="Legend">
+      <span><span class="pill expert">Expert</span> daily use, deep knowledge</span>
+      <span><span class="pill">Proficient</span> project experience</span>
+      <span><span class="pill familiar">Familiar</span> learning or explored</span>
+    </div>
+    <div class="skills-rows skill-group">
+      <div class="skills-cat">Languages &amp; core tools</div>
+      <div class="skills-pills"><span class="pill expert">Python</span><span class="pill expert">SQL</span><span class="pill expert">JavaScript</span><span class="pill expert">HTML / CSS</span><span class="pill expert">Arcade</span><span class="pill expert">Git</span><span class="pill expert">REST APIs</span></div>
+      <div class="skills-cat">Esri platform</div>
+      <div class="skills-pills"><span class="pill expert">ArcGIS Pro</span><span class="pill expert">ArcGIS Enterprise</span><span class="pill expert">ArcGIS Online Admin</span><span class="pill expert">ArcGIS Python API</span><span class="pill expert">Experience Builder</span><span class="pill expert">Dashboards</span><span class="pill expert">Survey123</span><span class="pill expert">Field Maps</span><span class="pill expert">Spatial Analyst</span><span class="pill expert">Network Analyst</span><span class="pill expert">Story Maps</span><span class="pill proficient">REST Services</span><span class="pill proficient">3D Scenes</span><span class="pill proficient">Insights</span><span class="pill proficient">Business Analyst</span><span class="pill proficient">3D Analyst</span><span class="pill proficient">GeoEvent Server</span></div>
+      <div class="skills-cat">Geospatial &amp; mapping</div>
+      <div class="skills-pills"><span class="pill proficient">PostGIS</span><span class="pill proficient">GeoPandas</span><span class="pill proficient">Rasterio</span><span class="pill proficient">Leaflet</span><span class="pill proficient">Cesium.js</span><span class="pill proficient">ArcGIS JS SDK</span><span class="pill proficient">QGIS</span><span class="pill proficient">GDAL</span><span class="pill proficient">H3</span><span class="pill proficient">A5</span><span class="pill proficient">LiDAR</span><span class="pill proficient">ArcHydro</span><span class="pill proficient">Remote Sensing</span><span class="pill proficient">GeoJSON</span><span class="pill proficient">GeoParquet</span><span class="pill proficient">STAC</span><span class="pill familiar">Deck.gl</span><span class="pill familiar">Mapbox</span><span class="pill familiar">Google Earth Engine</span><span class="pill familiar">ENVI</span></div>
+      <div class="skills-cat">Cloud, DevOps &amp; data</div>
+      <div class="skills-pills"><span class="pill proficient">Azure</span><span class="pill proficient">Firebase</span><span class="pill proficient">Docker</span><span class="pill proficient">GitHub Actions</span><span class="pill proficient">PostgreSQL</span><span class="pill proficient">Supabase</span><span class="pill proficient">DuckDB</span><span class="pill proficient">dbt</span><span class="pill proficient">Webhooks</span><span class="pill proficient">Valhalla</span><span class="pill proficient">Flask</span><span class="pill proficient">React</span><span class="pill proficient">Power Automate</span></div>
+      <div class="skills-cat">AI / ML</div>
+      <div class="skills-pills"><span class="pill proficient">NumPy</span><span class="pill proficient">Pandas</span><span class="pill proficient">scikit-learn</span><span class="pill proficient">Matplotlib</span><span class="pill proficient">SciPy</span><span class="pill familiar">PyTorch</span><span class="pill familiar">HuggingFace</span></div>
+      <div class="skills-cat">AI coding agents &amp; product analytics</div>
+      <div class="skills-pills"><span class="pill proficient">Claude Code</span><span class="pill proficient">Codex</span><span class="pill proficient">Claude API</span><span class="pill proficient">OpenAI API</span><span class="pill proficient">MCP Servers</span><span class="pill proficient">PostHog</span><span class="pill proficient">Figma</span></div>
+      <div class="skills-cat">Other</div>
+      <div class="skills-pills"><span class="pill familiar">R</span><span class="pill familiar">Blender</span><span class="pill familiar">Power Apps</span></div>
     </div>
   </div>
 </section>
