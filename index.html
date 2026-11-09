@@ -177,12 +177,20 @@
     @media (max-width: 1040px) { .nav-links { gap: 22px; } .nav-cta { padding: 8px 12px; } }
     @media (max-width: 900px) { .nav-links { gap: 14px; } .nav-cta { padding: 7px 10px; } }
 
-    /* Magenta blog button under the hero buttons (the blog's brand color) */
-    .hero-blog-row { margin-top: 12px; }
+    /* Second row under the hero buttons: the blog (magenta) and the Projection Room (green), each in its own brand color */
+    .hero-blog-row { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-blog-row .btn { padding: 12px 18px; }
     .btn-blog { background: #d9137f; color: #fff; border: 1px solid #d9137f; gap: 9px; }
     .btn-blog:hover { background: #c2107a; border-color: #f0449e; color: #fff; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(217,19,127,0.35); }
     .btn-blog:focus-visible { outline: 2px solid #f0449e; outline-offset: 3px; }
     .btn-blog:hover .blog-mark-slab, .btn-blog:focus-visible .blog-mark-slab { transform: translateY(-5px); }
+    .btn-room { background: #16a34a; color: #fff; border: 1px solid #16a34a; gap: 9px; }
+    .btn-room:hover { background: #15803d; border-color: #4ade80; color: #fff; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(74,222,128,0.35); }
+    .btn-room:focus-visible { outline: 2px solid #86efac; outline-offset: 3px; }
+    .room-mark { flex: none; }
+    .room-mark-beam { transition: transform 0.25s ease; }
+    .btn-room:hover .room-mark-beam, .btn-room:focus-visible .room-mark-beam { transform: translateX(2px); }
+    @media (prefers-reduced-motion: reduce) { .room-mark-beam { transition: none; } }
     /* ─── Hero ─── */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
@@ -498,8 +506,8 @@
       .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .hero-actions .btn { width: 100%; justify-content: center; padding: 12px 10px; font-size: 14px; }
       .hero-actions .btn-primary { grid-column: 1 / -1; }
-      .hero-blog-row { margin-top: 10px; }
-      .hero-blog-row .btn-blog { width: 100%; justify-content: center; padding: 12px 10px; font-size: 14px; }
+      .hero-blog-row { margin-top: 10px; gap: 10px; }
+      .hero-blog-row .btn-blog, .hero-blog-row .btn-room { width: 100%; justify-content: center; padding: 12px 10px; font-size: 14px; }
       .hero-proof { margin-top: 28px; padding-top: 20px; gap: 10px; }
       .hero-proof li { font-size: 14px; }
       .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; margin-top: 32px; padding-top: 24px; }
@@ -581,6 +589,7 @@
       </div>
       <div class="hero-blog-row animate delay-3">
         <a href="https://jacob-hogue.github.io/the-shape-files/" target="_blank" rel="noopener" class="btn btn-blog"><svg class="blog-mark" viewBox="0 0 64 64" width="18" height="18" aria-hidden="true" focusable="false"><polyline points="5,42 32,57.5 59,42" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><polyline points="5,32 32,47.5 59,32" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g class="blog-mark-slab"><polygon points="32,6.5 51.5,17.8 51.5,26.2 32,37.5 5,22" fill="#ffffff" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/><polygon points="51.5,17.8 44.2,22 51.5,26.2" fill="#f6a8d2" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/></g></svg><span>Read my blog: The Shape-Files</span><span aria-hidden="true">&nearr;</span></a>
+        <a href="/projection-room/" target="_blank" rel="noopener" class="btn btn-room"><svg class="room-mark" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="7" cy="6" r="3"/><circle cx="15" cy="6" r="3"/><rect x="2" y="10" width="15" height="9" rx="2"/><circle class="room-mark-lens" cx="9.5" cy="14.5" r="2"/><path class="room-mark-beam" d="M17 12.5l5-2v8l-5-2z"/><path d="M6 19v2M13 19v2"/></svg><span>Data visualizations: The Projection Room</span><span aria-hidden="true">&nearr;</span></a>
       </div>
       <ul class="hero-proof animate delay-4">
         <li><span><strong>Go/no-go decisions 75% faster</strong> for 50 senior military staff checking drone flights near air bases, with an obstruction calculator I built on AirHub Marketplace</span></li>
